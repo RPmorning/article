@@ -1,0 +1,190 @@
+@charset "utf-8";
+/**
+ * KRMCF初始化HTML标签及常用类型
+ * @Roam
+ * 2015-11-30
+**/
+
+/* ==============================================
+ * reset
+ * ============================================== */
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input, table, tr, td,img { padding: 0; margin: 0;border:0}
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, table, th, td ,address, cite, dfn, em, var { font-size: 1em; font-style: normal; font-weight: normal;}
+article, aside, details, figcaption, figure, footer,header, hgroup, menu, nav, section,summary, time, mark, audio, video, main {margin:0; padding:0;display: block; border:0}
+strong { font-weight: bold;}
+ul, li, ol { list-style: none outside none;}
+img { border: medium none;}
+caption, th {  text-align: left;}
+table { border-collapse: collapse; border-spacing: 0;}
+body {background: #fff; color: #666666; font-size:14px;font-family: "Arial","Microsoft YaHei","SimHei","SimSun",sans-serif;}
+
+/* 链接 */
+a:link, a:visited, a:active { text-decoration: none; outline: 0px none;}
+a:hover { text-decoration:none;}
+a.td{text-decoration: underline}
+i, cite, em { font-style: normal;}
+.cursor{cursor: pointer}
+
+
+/* Clearfix,避免因子元素浮动而导致的父元素高度缺失问题 */
+.clearfix:after { clear: both; content: "."; display: block; height: 0; line-height: 0; visibility: hidden;}
+.clearfix { display: inline-block;}
+.clearfix { display: block;}
+
+/* 任意元素的水平垂直绝对居中 */
+.center{top: 50%;left: 50%; transform: translate(-50%, -50%);
+    /* 浏览器兼容代码 */
+    -ms-transform: translate(-50%, -50%);/* IE 9 */
+    -moz-transform: translate(-50%, -50%);/* Firefox */
+    -webkit-transform: translate(-50%, -50%);/* Safari and Chrome */
+    -o-transform: translate(-50%, -50%); /* Opera */
+}
+
+
+.ellipsis-text {  white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis;  }
+
+/* 表单控件 */
+.control-mark {
+    background-color: transparent;
+    margin-top: 7px;
+}
+/* 布局方式 */
+.holy-grail{display: flex; min-height: 100vh; flex-direction: column;}
+
+/*Extra CSS File For Change on All The Websites*/
+.clear { clear: both; height: 0; font-size: 1px; }
+.w { width: 100vw;}
+.h { height: 100vh;}
+
+/* position */
+.tl { text-align:left !important;}
+.tc { text-align:center !important; }
+.tr { text-align:right !important;}
+.bc { margin-right:auto ;margin-left:auto;}
+.fl { float:left; display:inline;}
+.fr { float:right; display:inline;}
+.cb { clear:both;}
+.cl { clear:left;}
+.cr { clear:right;}
+.hidden { display:none;}
+.show{display: block;}
+.table{display: table}
+.flex{display: flex}
+.vm { display: table-cell; vertical-align: middle;}
+.vt { display: table-cell; vertical-align: top;}
+.pr { position:relative;}
+.pa { position:absolute;}
+.pf { position: fixed}
+.absRight { position:absolute; right:0;}
+.zoom { zoom:1}
+.block{display: block;}
+.in-block{display: inline-block;}
+.inLine{display: inline;}
+
+/* text */
+html{font-size: 12px;}
+body{font-size: 12px}
+.f12 { font-size:12px;}
+.f14 { font-size:14px;}
+.f16 { font-size:16px;}
+.f18 {font-size:18px;}
+.f20 { font-size:20px;}
+.f24 { font-size:24px;}
+.f26 { font-size:26px;}
+.f28 { font-size:28px;}
+.f32 { font-size:32px;}
+.fb { font-weight:bold;}
+.fn { font-weight:normal;}
+.t2 { text-indent:2em;}
+.td { text-decoration:underline;}
+.tin{text-indent:-999em}
+.ntd { text-decoration:none;}
+.nbd {border:none}
+.fc3{color:#333;}
+.fc6{color:#666;}
+.fc9{color:#999;}
+.fcBlack{color:#000;}
+.fcWhite{color:#fff;}
+.fcRed{color: #ee0000}
+.lh20 { line-height:20px}
+.lh30 { line-height:30px}
+.lh40 { line-height:40px}
+.lh50 { line-height:50px}
+.lh60 { line-height:60px}
+
+/* margin */
+.m5 { margin:5px;}
+.m10 { margin:10px;}
+.m15 { margin:15px;}
+.m20 { margin:20px;}
+.m30 { margin:30px;}
+.mt0 {margin-top: 0 !important;}
+.mt5 { margin-top:5px;}
+.mt10 { margin-top:10px !important;}
+.mt15 { margin-top:15px;}
+.mt20 { margin-top:20px !important;}
+.mt25 { margin-top:25px !important;}
+.mt30 { margin-top:30px !important;}
+.mt40 { margin-top:40px !important;}
+.mt50 { margin-top:50px !important;}
+.mt100 { margin-top:100px;}.
+                           .mb0 {margin-bottom: 0 !important;}
+.mb5 { margin-bottom:5px;}
+.mb10 { margin-bottom:10px !important;}
+.mb15 { margin-bottom:15px;}
+.mb20 { margin-bottom:20px;}
+.mb30 { margin-bottom:30px;}
+.mb50 { margin-bottom:50px;}
+.mb100 { margin-bottom:100px;}
+.ml0 {margin-left: 0 !important;}
+.ml5 { margin-left:5px;}
+.ml10 { margin-left:10px;}
+.ml15 { margin-left:15px;}
+.ml20 { margin-left:20px;}
+.ml30 { margin-left:30px;}
+.ml50 { margin-left:50px;}
+.ml100 { margin-left:100px;}
+.mr0 {margin-right: 0 !important;}
+.mr5 { margin-right:5px;}
+.mr10 { margin-right:10px;}
+.mr15 { margin-right:15px;}
+.mr20 { margin-right:20px;}
+.mr30 { margin-right:30px !important;}
+.mr50 { margin-right:50px !important;}
+.mr100 { margin-right:100px;}
+
+/* padding */
+.p0 {padding: 0px;}
+.p5 { padding:5px;}
+.p10 { padding:10px;}
+.p15 { padding:15px;}
+.p20 { padding:20px;}
+.p30 { padding:30px;}
+.pt5 { padding-top:5px;}
+.pt10 { padding-top:10px;}
+.pt15 { padding-top:15px;}
+.pt20 { padding-top:20px;}
+.pt30 { padding-top:30px;}
+.pt50 { padding-top:50px;}
+.pt100 { padding-top:100px;}
+.pb5 { padding-bottom:5px;}
+.pb10 { padding-bottom:10px;}
+.pb15 { padding-bottom:15px;}
+.pb20 { padding-bottom:20px;}
+.pb30 { padding-bottom:30px;}
+.pb50 { padding-bottom:50px;}
+.pb100 { padding-bottom:100px;}
+.pl5 { padding-left:5px;}
+.pl10 { padding-left:10px;}
+.pl15 { padding-left:15px;}
+.pl20 { padding-left:20px;}
+.pl30 { padding-left:30px;}
+.pl50 { padding-left:50px;}
+.pl100 { padding-left:100px;}
+.pr5 { padding-right:5px;}
+.pr10 { padding-right:10px;}
+.pr15 { padding-right:15px;}
+.pr20 { padding-right:20px;}
+.pr30 { padding-right:30px;}
+.pr50 { padding-right:50px;}
+.pr100 { padding-right:100px;}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{$pageTitle}|{$siteOption.site_name}</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    {assign name="controller" value="$Request.controller|strtolower" /}
+    {assign name="action" value="$Request.action|strtolower" /}
+    {css href="__LIB__/layui/css/layui.css,__COMMON__/reset.css,__ADMIN__/common.css" /}
+    <link rel="stylesheet" href="__LIB__/iconfont/iconfont.css">
+    {block name="page-css"}{/block}
+    <link href="__ADMIN__/{$controller}.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <!-- Page Start -->
+    <div id="kr-page">
+        {eq name="controller" value="passport"}
+        {block name="kr-passport"}{/block}
+        {else/}
+        <!-- Page Header Start -->
+        {include file="public/header" /}
+        <!-- Page Header End  -->
+        <!-- Page Body Start -->
+        {block name="kr-body"}
+        <div id="kr-body" class="clearfix">
+            <!-- Page Aside Start -->
+            <div id="kr-aside" class="pf">
+                <!-- Aside Menu Start  -->
+                {include file="public/menu" /}
+                <!-- Aside Menu End  -->
+            </div>
+            <!-- Page Aside End -->
+            <!-- Page Main Start  -->
+            <div id="kr-main" class="pr">
+                <!-- Main Blockquote Start  -->
+                <div id="kr-blockquote" class="clearfix">
+                    <div class="blockquote-breadcrumb fl">
+                        <span class="layui-breadcrumb">
+                            <a class="line pl5"><cite>您当前操作</cite></a>
+                            <a><cite>{$pageTitle}</cite></a>
+                        </span>
+                    </div>
+                    <div class="blockquote-menu fr">
+                        {block name="blockquote-menu"}{/block}
+                    </div>
+                </div>
+                <!-- Main Blockquote End  -->
+                <!-- Main container Start  -->
+                <div id="kr-container" class="main-container clearfix" data-url="{__URL__}">
+                    {block name="main-tips"}{/block}
+                    {block name="main-container"}{/block}
+                </div>
+                <!-- Main container End  -->
+                <!-- Page Footer Start-->
+                {include file="public/footer" /}
+                <!-- Page Footer End -->
+            </div>
+            <!-- Page Main End  -->
+        </div>
+        {/block}
+        <!-- Page Body End -->
+        {/eq}
+    </div>
+    <!-- Page End -->
+    <!-- Common JS Start -->
+    {js href="__LIB__/jquery/jquery.min.js, __LIB__/layui/layui.js, __ADMIN__/common.js" /}
+    <!-- Common JS End -->
+    <!-- Page JS Start -->
+    {block name="page-script"}{/block}
+    <script src="__ADMIN__/{$controller}.js"></script>
+    <!-- Page JS End -->
+</body>
+</html>

@@ -1,0 +1,36 @@
+<table class="layui-table">
+    <thead>
+    <tr>
+        <td>链接编号</td>
+        <td>链接标题</td>
+        <td>发布人</td>
+        <td>更新时间</td>
+        <td>链接状态</td>
+        <td>管理操作</td>
+    </tr>
+    </thead>
+    {present name='links'}
+    {volist name='links' id='link'}
+    <tr>
+        <td>{$link.id}</td>
+        <td>{$link.name}</td>
+        <td>{$link.member.username}</td>
+        <td>{$link.update_time}</td>
+        <td class="layui-form">
+            <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$link.id}"  value="1" {eq name="link.status" value="1"} checked{/eq}>
+        </td>
+        <td class="textalign">
+            <a href="javascript:link.edit('{$link.id}');" class="layui-btn layui-btn-small btn-success">
+                编辑
+            </a>
+            <a href="javascript:link.delete('{$link.id}');"  class="layui-btn layui-btn-small btn-danger">
+                删除
+            </a>
+        </td>
+    </tr>
+    {/volist}
+    {/present}
+</table>
+<div class="fr mt20">
+    总记录数：{$links->total()} {$links->render()}
+</div>

@@ -1,0 +1,23 @@
+<div id="kr-header" class="pf w clearfix">
+    <a class="logo show f20 tc fl" href="{:url('index')}">{$Think.config.SITE_NAME}</a>
+    <div class="header-nav clearfix">
+        <div class="nav-menu fl">
+            <a class="layui-nav-item" href="{:url('admin/index/index')}" target="">
+                站点首页
+            </a>
+
+        </div>
+        <div class="nav-toolbar fr">
+            <ul class="layui-nav">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><span style="color: #4CAF50;font-size: large">hello:</span>{$Think.session.user_auth.username}</a>
+                    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                        <dd><a href="javascript:common.updatePassword();">修改密码</a></dd>
+                        <dd><a href="javascript:common.logout();">退出系统</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

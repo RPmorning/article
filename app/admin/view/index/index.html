@@ -1,0 +1,96 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<div class="main-index">
+    <div class="layui-collapse">
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">服务器信息</h2>
+            <div class="layui-colla-content">
+                <table class="layui-table">
+                    <tbody>
+                    <tr>
+                        <td>Krcmf.Admin 版本</td>
+                        <td>1.00</td>
+                    </tr>
+                    <tr>
+                        <td>Krcmf 版本</td>
+                        <td>{$Think.const.THINK_VERSION}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器操作系统</td>
+                        <td>{:php_uname('s')}</td>
+                    </tr>
+                    <tr>
+                        <td>WEB运行环境</td>
+                        <td>{:php_sapi_name()}</td>
+                    </tr>
+                    <tr>
+                        <td>MySQL数据库版本</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>运行PHP版本</td>
+                        <td>{:phpversion()}</td>
+                    </tr>
+                    <tr>
+                        <td>上传大小限制</td>
+                        <td>{:ini_get('upload_max_filesize')}</td>
+                    </tr>
+                    <tr>
+                        <td>POST大小限制</td>
+                        <td>{:ini_get('post_max_size')}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">系统信息</h2>
+            <div class="layui-colla-content layui-show">
+                <table class="layui-table">
+                    <tbody>
+                    <tr>
+                        <td>系统名称</td>
+                        <td>{$system.name}</td>
+                    </tr>
+                    <tr>
+                        <td>产品研发团队</td>
+                        <td>{$system.team}</td>
+                    </tr>
+                    <tr>
+                        <td>产品DEMO体验</td>
+                        <td>
+                            <a target="_blank" href="{$system.demo}">{$system.demo}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BUG反馈</td>
+                        <td>
+                            <a target="_blank" href="{$system.bug}">{$system.bug}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>项目地址</td>
+                        <td>
+                            <a target="_blank" href="{$system.project}">{$system.project}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>公司官网</td>
+                        <td>
+                            <a target="_blank" href=" {$system.company_site}">{$system.company_site}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>公司地址</td>
+                        <td>
+                            {$system.company_address}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+

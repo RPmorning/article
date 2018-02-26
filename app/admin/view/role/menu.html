@@ -1,0 +1,53 @@
+{extend name="public/base" /}
+{block name="blockquote-menu"}
+<a class="layui-btn layui-btn-small" href="{:url('index')}">
+    <i class="layui-icon">&#xe60a;</i> 角色列表
+</a>
+{/block}
+{block name="main-container"}
+<article class="main-auth">
+    <ul class="layui-tab-title">
+        <li class="layui-this">菜单授权</li>
+        <!--<li><a href="{:url('access','id='.$Request.param.id)}">数据授权</a></li>-->
+    </ul>
+    <div class="auth-filter mt20">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <select name="role_filter" lay-filter="roleFilter" data-action="{$Request.action}">
+                    {volist name="roles" id="role"}
+                    <option value="{$role.id}" {eq name='Request.param.id' value='$role.id'} selected{/eq}>{$role.name}</option>
+                    {/volist}
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="main-menu">
+        <form class="layui-form">
+            <ul id="menu-tree"  class="menu-tree"  data-auth="{$rules}">
+                {volist name="menus" id="node"}
+                <li class="menu-tree-item">
+                    <span class="layui-icon left-icon">&#xe623;</span>
+                    <input type="checkbox" class="rules" lay-filter="menu" lay-skin="primary" name="rules" id="menu_{$authRule[$node.url]}" value="{$authRule[$node.url]}" title="{$node.name}">
+                    {present name="node.child"}
+                    <ul>
+                        {volist name="node.child" id="node2" }
+                        <li class="menu-tree-item tree2">
+                            |— <input type="checkbox" class="rules" lay-filter="menu" lay-skin="primary" name="rules" id="menu_{$authRule[$node2.url]}" value="{$authRule[$node2.url]}" title="{$node2.name}">
+                            {present name="node2.child"}
+                            {/present}
+                        </li>
+                        {/volist}
+                    </ul>
+                    {/present}
+                </li>
+                {/volist}
+            </ul>
+            <div class="layui-input-block">
+                <input type="hidden" name="role_id" value="{$Request.param.id}">
+                <a class="layui-btn save-btn" lay-filter="menuUpdate" lay-submit>保存</a>
+                <input type="reset" class="layui-btn layui-btn-primary goback" value="重置">
+            </div>
+        </form>
+    </div>
+</article>
+{/block}

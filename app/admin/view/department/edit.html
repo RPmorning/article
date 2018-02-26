@@ -1,0 +1,47 @@
+<form class="layui-form mt20">
+    <div class="layui-form-item">
+        <label class="layui-form-label">部门名称</label>
+        <div class="layui-input-inline">
+            <input type="text" name="department_name" class="layui-input" value="{$department.department_name}" placeholder="请输入部门名称">
+        </div>
+        <div class="layui-form-mid layui-word-aux">
+            <cite class="fcRed mr5">*</cite>
+            <span class="mark-name">部门名称，长度<10</span>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">部门地点</label>
+        <div class="layui-input-inline">
+            <input type="text" name="address" class="layui-input" placeholder="请输入部门地点" value="{$department.address}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">部门描述</label>
+        <div class="layui-input-inline">
+            <input type="text" name="department_desc" class="layui-input" placeholder="请输入部门描述" value="{$department.department_desc}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">办公电话</label>
+        <div class="layui-input-inline">
+            <input type="text" name="office_phone" class="layui-input" placeholder="请输入办公电话" value="{$department.office_phone}">
+        </div>
+    </div>
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">部门角色</label>
+        <div class="layui-input-block">
+                {volist name='roles' id='vo'}
+                    {in name="$vo.id" value="$department.d_role_id"}
+                        <input type="checkbox" name="roles" value="{$vo.id}" lay-skin="primary" title="{$vo.name}" checked>
+                    {else/}
+                        <input type="checkbox" name="roles" value="{$vo.id}" lay-skin="primary" title="{$vo.name}">
+                    {/in}
+                {/volist}
+        </div>
+    </div>
+    <input name="id" value="{$department.id}" hidden>
+    <div class="layui-input-block">
+        <a class="layui-btn save-btn" lay-filter="update" lay-submit>保存</a>
+        <input type="reset" class="layui-btn layui-btn-primary goback" value="取消">
+    </div>
+</form>

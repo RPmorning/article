@@ -1,0 +1,55 @@
+<header class="category-filter layui-form">
+    <div class="layui-form-item">
+        <select name="category_filter" lay-filter="categoryFilter">
+            <option value="0">全部文章</option>
+            {volist name="categorys" id="category"}
+            {present name="category.leaf"}
+            <option value="{$category.id}" disabled>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
+            {else/}
+            <option value="{$category.id}"{eq name='Request.param.cid' value='$category.id'} selected{/eq}>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
+            {/present}
+            {/volist}
+        </select>
+    </div>
+</header>
+
+<essay class="main-essay">
+    <div class="layui-tab-item layui-show">
+        <div class="essay">
+            <ul class="essaylist">
+                {present name='articles'}
+                {volist name='articles' id='vo'}
+                <li class="essayli">
+                    {eq name="power.operation_update" value="1"}
+                        <a href="javascript:article.edit('{$vo.id}');" class="layui-btn layui-btn-small btn-success" >
+                            编辑
+                        </a>
+                    {/eq}
+                    {eq name="power.operation_delete" value="1"}
+                        <a href="javascript:article.delete('{$vo.id}');" class="layui-btn layui-btn-small btn-success" >
+                            删除
+                        </a>
+                    {/eq}
+                    {eq name="power.operation_check" value="1"}
+                        <a href="javascript:article.check('{$vo.id}');" class="layui-btn layui-btn-small btn-success" >
+                            审核
+                        </a>
+                    {/eq}
+                    <div class="img">
+                        <img src="{$vo.cover}" alt="干啥勒？咋没图片勒" class="images" />
+                    </div>
+                    <span class="words">{$vo.name}</span>
+                    <span class="">发布时间：{$vo.update_time}</span>
+                </li>
+                {/volist}
+                {/present}
+            </ul>
+        </div>
+        <div class="fr mt20 record">
+            总记录数：{$articles->total()} {$articles->render()}
+        </div>
+    </div>
+</essay>
+
+
+

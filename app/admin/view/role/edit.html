@@ -1,0 +1,61 @@
+<form class="layui-form mt20">
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色名称</label>
+        <div class="layui-input-inline">
+            <input type="text" name="name" class="layui-input" placeholder="请输入角色名称" value="{$role.name}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色描述</label>
+        <div class="layui-input-inline">
+            <input type="text" name="desc" class="layui-input" placeholder="请输入角色描述" value="{$role.desc}">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">操作授权</label>
+        <div class="layui-input-block">
+            {eq name="$role.operation.operation_create" value="1"}
+            <input type="checkbox" name="operation_create" value="1" lay-skin="primary" title="新增" checked>
+            {else/}
+            <input type="checkbox" name="operation_create" value="1" lay-skin="primary" title="新增">
+            {/eq}
+            {eq name="$role.operation.operation_update" value="1"}
+            <input type="checkbox" name="operation_update" value="1" lay-skin="primary" title="修改" checked>
+            {else/}
+            <input type="checkbox" name="operation_update" value="1" lay-skin="primary" title="修改">
+            {/eq}
+            {eq name="$role.operation.operation_delete" value="1"}
+            <input type="checkbox" name="operation_delete" value="1" lay-skin="primary" title="删除" checked>
+            {else/}
+            <input type="checkbox" name="operation_delete" value="1" lay-skin="primary" title="删除">
+            {/eq}
+            {eq name="$role.operation.operation_check" value="1"}
+            <input type="checkbox" name="operation_check" value="1" lay-skin="primary" title="审核" checked>
+            {else/}
+            <input type="checkbox" name="operation_check"  value="1" lay-skin="primary" title="审核">
+            {/eq}
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">栏目授权</label>
+        <div class="layui-input-block">
+            {volist name='category' id='vo'}
+                {in name="$vo.id" value="$role.operation.category"}
+                <input type="checkbox" name="category" value="{$vo.id}" lay-skin="primary" title="{$vo.name}" checked>
+                {else/}
+                <input type="checkbox" name="category" value="{$vo.id}" lay-skin="primary" title="{$vo.name}">
+                {/in}
+            <br>
+            {/volist}
+        </div>
+    </div>
+
+    <input name="id" value="{$role.id}" hidden>
+    <input name="oid" value="{$role.operation_id}" hidden>
+    <div class="layui-input-block">
+        <a class="layui-btn save-btn" lay-filter="update" lay-submit>保存</a>
+        <input type="reset" class="layui-btn layui-btn-primary goback" value="取消">
+    </div>
+</form>

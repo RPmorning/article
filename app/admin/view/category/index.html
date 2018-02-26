@@ -1,0 +1,64 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<article class="main-menu">
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">栏目列表</li>
+            <li>添加栏目</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table"  id="category-table">
+                    <thead>
+                        <tr>
+                            <!--<td>排序</td>-->
+                            <td>ID</td>
+                            <td>栏目名称</td>
+                            <td>栏目类型</td>
+                            <td>所属模型</td>
+                            <td>主导航</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {volist name="categorys" id="category"}
+                        <tr data-tt-id="{$category.id}" class="category-tr"
+
+                            {eq name="category.level" value="1"} data-hier="1"
+                            {else/} data-tt-parent-id="{$category.pid}" class="hidden"
+                            {/eq}
+                        >
+                            <!--<td><input type="text" class="layui-input menu-sort" value="{$category.sort}"></td>-->
+                            <td>{$category.id}</td>
+                            <td>{$category.name}</td>
+                            <td>{$category.type_text}</td>
+                            <td>{$category.model_text}</td>
+                            <td class="layui-form">
+                                <input type="checkbox" lay-skin="switch" lay-filter="nav" lay-text="ON|OFF" data-id="{$category.id}" value="1"  {eq name="category.is_nav" value="1"} checked{/eq}>
+                            </td>
+                            <td class="operation">
+                                <!--<a href="javascript:category.createSub('{$category.id}');" class="layui-btn layui-btn-small btn-success">-->
+                                    <!--添加子栏目-->
+                                <!--</a>-->
+                                <a href="javascript:category.edit('{$category.id}');" class="layui-btn layui-btn-small btn-success">
+                                    编辑
+                                </a>
+                            </td>
+                        </tr>
+                        {/volist}
+                    </tbody>
+                </table>
+                <!--<div class="fl mt20">-->
+                    <!--<a href="javascript:category.sort();" class="sortBtn layui-btn btn-success layui-btn-small">排序</a>-->
+                <!--</div>-->
+            </div>
+            <div class="layui-tab-item">
+                {include file="category/create" /}
+            </div>
+        </div>
+    </div>
+</article>
+{/block}
+{block name="page-script"}
+{js href="__LIB__/jquery/jquery.treetable.js" /}
+{/block}

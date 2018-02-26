@@ -1,0 +1,36 @@
+{extend name="public/base" /}
+<!--网站信息-->
+{block name="main-container"}
+<article class="main-sms">
+    <fieldset class="layui-elem-field">
+        <legend>网站配置</legend>
+        <div class="layui-field-box">
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">网站名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="site_name" class="layui-input" value="{$siteOption.site_name}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">登录背景图</label>
+                    <div class="layui-input-inline">
+                        <div class="site-demo-upload">
+                            <img src="__UPLOAD__/{$siteOption.site_login_bg}" data-path="__UPLOAD__"  data-name="{$siteOption.site_login_bg}" id="site-login-bg-src">
+                            <div class="site-demo-upbar mt10">
+                                <input type="file" name="site_login_bg" class="layui-upload-file"  lay-ext="jpg|png|gif" id="site-login-bg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn sms" lay-submit lay-filter="update">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</article>
+{/block}

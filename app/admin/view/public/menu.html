@@ -1,0 +1,20 @@
+<div class="aside-menu layui-bg-blue">
+    <!--<div id="aside-sidebar" class="cursor tc"><i class="iconfont icon-sidebar"></i></div>-->
+    <ul class="layui-nav layui-nav-tree" lay-filter="test">
+
+        {volist name="menus" id="menu" empty="no data" }
+        <li class="layui-nav-item layui-nav-itemed">
+            {present name="menu.child"}
+            <a href="javascript:;">{$menu.name}</a>
+            <dl class="layui-nav-child">
+                {volist name="menu.child" id="submenu" empty="no data" }
+                <dd class="{$submenu.class|default=''}"><a href="{$submenu.url|url}"><i class="iconfont f16 mr5 {$submenu.icon}"></i>{$submenu.name}</a></dd>                    {/volist}
+            </dl>
+            {else/}
+            <a href="{$menu.url|url}"><i class="iconfont f16 mr5 {$submenu.icon}"></i>{$menu.name}</a>
+            {/present}
+        </li>
+        {/volist}
+
+    </ul>
+</div>

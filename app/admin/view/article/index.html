@@ -1,0 +1,26 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<article class="main-article">
+    <div class="layui-tab" lay-filter="article">
+        <ul class="layui-tab-title">
+            <li class="layui-this">文章列表</li>
+            {eq name="power.operation_create" value="1"}
+                <li>添加文章</li>
+            {/eq}
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show pt10" id="article-list">
+                {include file="article/list" /}
+            </div>
+            {eq name="power.operation_create" value="1"}
+                <div class="layui-tab-item">
+                    {include file="article/create" /}
+                </div>
+            {/eq}
+        </div>
+    </div>
+</article>
+{/block}
+{block name="page-script"}
+{js href="__LIB__/ueditor/ueditor.config.js, __LIB__/ueditor/ueditor.all.min.js" /}
+{/block}

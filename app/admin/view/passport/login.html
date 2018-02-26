@@ -1,0 +1,32 @@
+{extend name="public/base" /}
+{block name="kr-passport"}
+<div id="particles-js" data-bg="__UPLOAD__/{$siteOption.site_login_bg}"></div>
+<div id="kr-passport" class="pr">
+    <div class="passport-login pa">
+        <a href="javascript:void(0);" class="logo show pa"></a>
+        <div class="login-box p20 pr">
+            <h1 class="f20 tc">{$siteOption.site_name}</h1>
+            <form class="layui-form m20">
+                <div class="layui-form-item">
+                    <input type="text" name="username" lay-verify="username" placeholder="请输入用户名" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <input type="password" name="password" lay-verify="password" placeholder="请输入密码" class="layui-input">
+                </div>
+
+                <div class="layui-form-item">
+                    <button class="layui-btn" lay-submit lay-filter="login">登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="page-script"}
+{js href="__ADMIN__/particles.min.js" /}
+<script>
+    var bg = $("#particles-js").attr("data-bg");
+    bg = bg.replace(/\\/g, "/");
+    $("#particles-js").css("background-image","url(" + bg + ")");
+</script>
+{/block}

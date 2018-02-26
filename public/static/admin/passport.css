@@ -1,0 +1,20 @@
+html,body{background-color: #000 }
+/* -------------------------- 登 录 ---------------------------------*/
+#kr-passport{z-index: 1; height: 100vh; }
+#kr-passport .passport-login{ width: 400px; left: 50%; top: 50%; margin-top: -225px; margin-left: -200px;}
+#kr-passport .passport-login .logo{background: url("../common/logo-passport.png") no-repeat center center; width: 127px; height: 127px; top: -63px; left: 136px;  z-index: 3}
+#kr-passport .passport-login .login-box{ background-color: #fff}
+#kr-passport .passport-login h1{margin-top: 60px; line-height: 60px;}
+#kr-passport .passport-login .layui-btn{width: 100%}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    background-color: #222;
+    background-image: url("bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}

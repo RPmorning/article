@@ -1,0 +1,4 @@
+#site-login-bg-src{  width: 200px;  height: auto;  }
+.main-mail .layui-form-label {width: 110px;}
+.main-sms .layui-input, .main-sms .layui-textarea {width: 80%}
+.layui-width-full .layui-input, .layui-width-full .layui-textarea {width: 100%}

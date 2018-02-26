@@ -1,0 +1,19 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<article class="main-article">
+    <div class="layui-tab" lay-filter="library">
+        <ul class="layui-tab-title">
+            <li class="layui-this">文件头列表</li>
+            <li>添加文件头</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show" id="article-list">
+                {include file="library/list" /}
+            </div>
+            <div class="layui-tab-item">
+                {include file="library/create" /}
+            </div>
+        </div>
+    </div>
+</article>
+{/block}

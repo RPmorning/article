@@ -1,0 +1,62 @@
+<form class="layui-form mt20">
+    <div class="layui-form-item">
+        <label class="layui-form-label">上级</label>
+        <div class="layui-input-inline">
+            <select name="pid" lay-filter="pid">
+                <option value="0|0">作为一级栏目</option>
+                {volist name="categorys" id="category"}
+                <option value="{$category.id}|{$category.level}"{eq name='category.id' value='$pid'} selected{/eq}>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">栏目类型</label>
+        <div class="layui-input-inline">
+            <select name="type" lay-filter="createType">
+                {volist name="Think.config.category.type" id="type"}
+                <option value="{$key}">{$type}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item" id="create-model">
+        <label class="layui-form-label">所属模型</label>
+        <div class="layui-input-inline">
+            <select name="model_id" lay-filter="model">
+                {volist name="Think.config.category.model" id="type"}
+                <option value="{$key}">{$type}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">栏目标题</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" lay-verify="required" name="name">
+        </div>
+    </div>
+
+    <div class="layui-form-item hidden" id="create-url">
+        <label class="layui-form-label">链接地址</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" name="url" placeholder="请输入外部链接地址">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">栏目排序</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" name="sort"   placeholder="20">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label nomal-padding">主导航</label>
+        <div class="layui-input-inline">
+            <input type="checkbox" name="is_nav" lay-skin="switch" lay-text="ON|OFF" checked value="1">
+        </div>
+    </div>
+    <div class="layui-input-block">
+        <a class="layui-btn save-btn layui-btn-normal" lay-filter="save" lay-submit>保存</a>
+        <input type="reset" class="layui-btn layui-btn-primary goback" value="重置">
+    </div>
+</form>

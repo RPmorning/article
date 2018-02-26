@@ -1,0 +1,22 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<article class="main-article">
+    <div class="layui-tab" lay-filter="works">
+        <ul class="layui-tab-title">
+            <li class="layui-this">作品列表</li>
+            <li>添加作品</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show pt10" id="article-list">
+                {include file="works/list" /}
+            </div>
+            <div class="layui-tab-item">
+                {include file="works/create" /}
+            </div>
+        </div>
+    </div>
+</article>
+{/block}
+{block name="page-script"}
+{js href="__LIB__/ueditor/ueditor.config.js, __LIB__/ueditor/ueditor.all.min.js" /}
+{/block}

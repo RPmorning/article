@@ -1,0 +1,37 @@
+<table class="layui-table">
+    <thead>
+    <tr>
+        <td>序号</td>
+        <td>文件头标题</td>
+        <td>文件头内容</td>
+        <td>文件头状态</td>
+        <td>管理操作</td>
+    </tr>
+    </thead>
+    {present name='librarys'}
+    {volist name='librarys' id='library'}
+    <tr>
+        <td>{$key+1}</td>
+        <td>{$library.name}</td>
+        <td>{$library.content}</td>
+        <td class="layui-form">
+            <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$library.id}"  value="1" {eq name="library.status" value="1"} checked{/eq}>
+        </td>
+        <td class="textalign">
+
+            {eq name="library.status" value="1"}
+                <a href="javascript:library.edit('{$library.id}');" class="layui-btn layui-btn-small btn-success">
+                    编辑
+                </a>
+                <a href="javascript:library.delete('{$library.id}');"  class="layui-btn layui-btn-small btn-danger">
+                    删除
+                </a>
+            {/eq}
+        </td>
+    </tr>
+    {/volist}
+    {/present}
+</table>
+<div class="fr mt20">
+    总记录数：{$librarys->total()} {$librarys->render()}
+</div>

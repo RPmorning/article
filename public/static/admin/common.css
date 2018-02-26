@@ -1,0 +1,94 @@
+@charset "utf-8";
+body{background-color: #f4f4f4;}
+/* KrCmf Style */
+#kr-page{min-height: 100%}
+#kr-header{background-color: #fff;  height: 50px; line-height: 50px; top: 0; z-index: 100; width: 100%; border-bottom: 1px solid #dcdcdc}
+#kr-body{top:50px;}
+#kr-main{top:60px; margin-left: 200px;}
+#kr-main-edit{}
+#kr-aside{top: 50px; bottom: 0;left: 0;overflow-x: hidden;z-index: 999; background-color:#2f323a;}
+#kr-blockquote{ line-height: 40px; padding:0 20px;  }
+#kr-footer{margin: 0 20px; border-top: 1px solid #e2e2e2;}
+
+/* kr-header */
+#kr-header a.logo{color: #fff; background-color: #23262E; width: 200px; height: 51px}
+#kr-header .nav-menu a{padding: 20px; color: #a4a4a4; font-size: 14px;position: relative;top:-2px;}
+#kr-header .nav-menu a:hover,#kr-header .nav-menu a.layui-this{color: #fff; background-color: #0580d2}
+#kr-header .icon-avatar{color: #ff9646}
+#kr-header .layui-nav{background: none; }
+#kr-header .layui-nav a{color: #a4a4a4}
+#kr-header .layui-nav a:hover{color: #0580d2; }
+#kr-header .layui-nav-item{line-height: 50px;}
+#kr-header .layui-nav-more{top: 22px;}
+#kr-header .layui-nav-mored{top: 18px;}
+
+/* kr-blockquote*/
+#kr-blockquote .line{border-left: 2px solid #0580d2}
+
+/* kr-aside */
+#kr-aside .aside-menu{width: 200px;}
+#kr-aside .layui-nav-tree{width: 100%}
+#kr-aside #aside-sidebar{height: 30px; line-height: 30px;background: #394555;  color: #aeb9c2; }
+
+/* kr-main */
+#kr-main .main-container{min-height: 80vh; margin: 0 20px 20px 20px;}
+
+/* Icon-Font */
+.iconfont{
+    font-size: 18px;
+}
+
+.layui-nav-item a cite {
+    padding: 0 10px;
+}
+
+.layui-tab-title .layui-this:after{border-bottom-color: #f4f4f4}
+
+
+/* pager */
+.pagination {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0 10px 10px;
+}
+
+.pagination li {
+    margin-left: 2px;
+    margin-right: 2px;
+    display: inline-block;
+}
+
+.pagination li.disabled span {
+    color: #c5c5c5;
+}
+.pagination li.disabled span {
+    color: #c5c5c5;
+}
+.pagination li a, .pagination li span {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    border: 1px solid #e2e2e2;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 -1px 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+}
+
+.pagination li.active span, .pagination li a:hover {
+    background-color: #0580D2;
+    color: #fff;
+}
+
+#kr-aside .layui-nav-itemed>a{
+    background-color: #3f84bb;
+}
+
+#kr-aside .layui-nav-tree .layui-nav-child a{
+    /*background-color: w;*/
+}
+.layui-table td, .layui-table th{
+    font-size: 15px;
+}

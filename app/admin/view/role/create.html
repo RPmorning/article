@@ -1,0 +1,56 @@
+{extend name="public/base" /}
+{block name="blockquote-menu"}
+<a class="layui-btn layui-btn-small" href="{:url('index')}">
+    <i class="layui-icon">&#xe60a;</i> 角色列表
+</a>
+{/block}
+{block name="main-container"}
+<role class="main-auth">
+    <ul class="layui-tab-title">
+        <li class="layui-this">添加角色</li>
+        <!--<li><a href="{:url('access','id='.$Request.param.id)}">数据授权</a></li>-->
+    </ul>
+    <div class="main-role">
+        <form class="layui-form mt20">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" class="layui-input" placeholder="请输入角色名称">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色描述</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="desc" class="layui-input" placeholder="请输入角色描述">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">操作授权</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="operation_create" value="1" lay-skin="primary" title="新增">
+                    <input type="checkbox" name="operation_update" value="1" lay-skin="primary" title="修改">
+                    <input type="checkbox" name="operation_delete" value="1" lay-skin="primary" title="删除">
+                    <input type="checkbox" name="operation_check"  value="1" lay-skin="primary" title="审核">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">栏目授权</label>
+                <div class="layui-input-block">
+                    {volist name='category' id='vo'}
+                        <input type="checkbox" name="category" value="{$vo.id}" lay-skin="primary" title="{$vo.name}">
+                        <br>
+                    {/volist}
+                </div>
+            </div>
+
+            <div class="layui-input-block">
+                <a class="layui-btn save-btn" lay-filter="create" lay-submit>保存</a>
+                <input type="reset" class="layui-btn layui-btn-primary goback" value="重置">
+            </div>
+        </form>
+    </div>
+</role>
+{/block}

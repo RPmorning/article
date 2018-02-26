@@ -1,0 +1,8 @@
+.main-auth .tree2{margin-left: 35px;}
+.main-auth .tree3{margin-left: 40px;}
+.main-auth .tree4{margin-left: 50px;}
+.main-auth .tree5{margin-left: 60px;}
+.main-auth .tree6{margin-left: 70px;}
+
+#menu-tree li:first-child{}
+#menu-tree li{line-height: 40px; border-top: 1px solid #e6e6e6;}

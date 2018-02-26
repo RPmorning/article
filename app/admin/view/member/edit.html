@@ -1,0 +1,93 @@
+<form class="layui-form mt20">
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="username" class="layui-input" lay-verify="required|username" value="{$member.username}">
+        </div>
+        <div class="layui-form-mid layui-word-aux">
+            <cite class="fcRed mr5">*</cite>
+            <span class="mark-name">登录使用，用户名长度4-30</span>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">真实姓名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="realname" class="layui-input" lay-verify="required|realname" value="{$member.realname}">
+        </div>
+        <div class="layui-form-mid layui-word-aux">
+            <cite class="fcRed mr5">*</cite>
+            <span class="mark-name">英文名也可以</span>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">性  别</label>
+        <div class="layui-input-inline">
+            <select name="sex" lay-filter="sex">
+                <option value="0" {eq name="member.sex" value="0"} selected{/eq}>男</option>
+                <option value="1" {eq name="member.sex" value="1"} selected{/eq}>女</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">选择部门</label>
+        <div class="layui-input-inline">
+            <select class="select-department"  name='department_id'  lay-filter="departments" lay-verify="department_id">
+                <option value="">请选部门</option>
+                {present name="department"}
+                {volist name="department" id="vo"}
+                <option value="{$vo.id}" {if condition="$vo.id eq $member.department_id"} selected {/if}>{$vo.department_name}</option>
+                {/volist}
+                {/present}
+
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">选择角色</label>
+        <div class="layui-input-inline">
+            <select class="select-department"  id="role" name='role_id'  lay-filter="role" lay-verify="role_id">
+                {present name="role"}
+                {volist name="role" id="vo"}
+                <option value="{$vo.id}" {if condition="$vo.id eq $member.role_id"} selected {/if}>{$vo.name}</option>
+                {/volist}
+                {/present}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">职  务</label>
+        <div class="layui-input-inline">
+            <input type="text" name="position" class="layui-input" value="{$member.position}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">描  述</label>
+        <div class="layui-input-inline">
+            <input type="text" name="desc" class="layui-input" value="{$member.desc}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">办公电话</label>
+        <div class="layui-input-inline">
+            <input type="text" name="office_phone" class="layui-input" value="{$member.office_phone}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">移动电话</label>
+        <div class="layui-input-inline">
+            <input type="text" name="mobile_phone" class="layui-input" value="{$member.mobile_phone}">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">QQ</label>
+        <div class="layui-input-inline">
+            <input type="text" name="qq" class="layui-input" value="{$member.qq}">
+        </div>
+    </div>
+    <div class="layui-input-block">
+        <input type="hidden" name="id" value="{$member.id}">
+        <a class="layui-btn save-btn" lay-filter="update" lay-submit>保存</a>
+        <input type="reset" class="layui-btn layui-btn-primary goback" value="重置">
+    </div>
+</form>

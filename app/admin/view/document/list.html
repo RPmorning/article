@@ -1,0 +1,52 @@
+<header class="category-filter layui-form">
+    <div class="layui-form-item">
+        <select name="category_filter" lay-filter="categoryFilter">
+            <option value="0">全部文档</option>
+            {volist name="categorys" id="category"}
+            {present name="category.leaf"}
+            <option value="{$category.id}" disabled>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
+            {else/}
+            <option value="{$category.id}"{eq name='Request.param.cid' value='$category.id'} selected{/eq}>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
+            {/present}
+            {/volist}
+        </select>
+    </div>
+</header>
+<table class="layui-table">
+    <thead>
+    <tr>
+        <td>序号</td>
+        <td>文档标题</td>
+        <td>发布人</td>
+        <td>所属类别</td>
+        <td>更新时间</td>
+        <td>文档状态</td>
+        <td>管理操作</td>
+    </tr>
+    </thead>
+    {present name='documents'}
+    {volist name='documents' id='document'}
+    <tr>
+        <td>{$key+1}</td>
+        <td>{$document.name}</td>
+        <td>{$document.member.username}</td>
+        <td>{$document.category.name}</td>
+        <td>{$document.update_time}</td>
+        <td class="layui-form">
+            <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$document.id}"  value="1" {eq name="document.status" value="1"} checked{/eq}>
+        </td>
+        <td class="textalign">
+            <a href="javascript:document.edit('{$document.id}');" class="layui-btn layui-btn-small btn-success">
+                编辑
+            </a>
+            <a href="javascript:document.delete('{$document.id}');"  class="layui-btn layui-btn-small btn-danger">
+                删除
+            </a>
+        </td>
+    </tr>
+    {/volist}
+    {/present}
+</table>
+<div class="fr mt20">
+    总记录数：{$documents->total()} {$documents->render()}
+</div>

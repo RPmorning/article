@@ -1,0 +1,60 @@
+{extend name="public/base" /}
+{block name="main-container"}
+<department class="main-department">
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">部门列表</li>
+            <!--<li>添加部门</li>-->
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table" id="department-table">
+                    <thead>
+                        <tr>
+                            <td>部门编号</td>
+                            <td>部门名称</td>
+                            <td>部门电话</td>
+                            <td>用户状态</td>
+                            <td>用户操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {volist name="department" id="vo"}
+                        {if condition="$vo.level eq 1"}
+                        <tr  data-tt-id="{$vo.id}" data-hier="1">
+                            {else/}
+                        <tr  data-tt-id="{$vo.id}"  data-tt-parent-id="{$vo.pid}" class="hidden">
+                            {/if}
+                            <td>{$key+1}</td>
+                            <td>{$vo.department_name}</td>
+                            <td>{$vo.office_phone}</td>
+                            <td class="layui-form">
+                                <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$vo.id}" value="1"  {eq name="vo.status" value="1"} checked{/eq}>
+                            </td>
+                            <td class="operation">
+                                {eq name="vo.status" value="1"}
+                                <a href="javascript:department.createSub('{$vo.id}');" class="layui-btn layui-btn-small btn-success">
+                                    添加下属部门
+                                </a>
+                                <a href="javascript:department.edit('{$vo.id}');" class="layui-btn layui-btn-small btn-success">
+                                    编辑
+                                </a>
+                                <a href="javascript:department.delete('{$vo.id}');" class="layui-btn layui-btn-small btn-success">
+                                    删除
+                                </a>
+                                {/eq}
+                            </td>
+                        </tr>
+                        {/volist}
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</department>
+{/block}
+{block name="page-script"}
+{js href="__LIB__/jquery/jquery.treetable.js" /}
+{/block}

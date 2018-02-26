@@ -1,0 +1,10 @@
+#cover-src,#edit-cover-src{  width: 200px;  height: auto;  }
+.layui-input, .layui-textarea{
+    width: 95%;
+}
+.layui-input-block{
+    width: 26%;
+}
+.layui-input, .layui-textarea {
+    width: 200%;
+}

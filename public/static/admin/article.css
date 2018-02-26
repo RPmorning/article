@@ -1,0 +1,26 @@
+#cover-src,#edit-cover-src{  width: 200px;  height: auto;  }
+
+.record{
+    position: absolute;
+    bottom: 50px;
+    right: 45%;
+}
+.essaylist li{float: left; width: 260px; margin-bottom: 20px}
+.essaylist li{border: 1px solid #ffffff}
+.essaylist li:hover{border:1px solid #BFEFFF; background-color: #ffffff}
+.essayli .img{width:260px; text-align: center;box-shadow: 10px 10px 5px #888888;}
+.images{
+    width: 200px;
+    height: 230px;
+    margin: 10px auto;
+    border: 1px solid black;
+}
+.essayli span{
+    display: block;
+    text-align: center;
+    text-shadow: 5px 5px 5px #FFB5C5;
+    font-size: 15px;
+}
+.essayli .words{
+    margin-top: 10px;
+}
