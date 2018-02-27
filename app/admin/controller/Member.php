@@ -38,6 +38,7 @@ class Member extends Base
         // 查询用户数据
         $members =  $this->member->getMembers();
         $this->assign('members', $members);
+//        dump(collection($members)->toArray());die();
         $department = $this->department->getDepartment();
         $this->assign('department',$department);
         return $this->fetch();

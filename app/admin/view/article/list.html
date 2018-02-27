@@ -20,21 +20,23 @@
                 {present name='articles'}
                 {volist name='articles' id='vo'}
                 <li class="essayli">
-                    {eq name="power.operation_update" value="1"}
+                    <div class="btns">
+                        {eq name="power.operation_update" value="1"}
                         <a href="javascript:article.edit('{$vo.id}');" class="layui-btn layui-btn-small btn-success" >
                             编辑
                         </a>
-                    {/eq}
-                    {eq name="power.operation_delete" value="1"}
+                        {/eq}
+                        {eq name="power.operation_delete" value="1"}
                         <a href="javascript:article.delete('{$vo.id}');" class="layui-btn layui-btn-small btn-success" >
                             删除
                         </a>
-                    {/eq}
-                    {eq name="power.operation_check" value="1"}
+                        {/eq}
+                        {eq name="power.operation_check" value="1"}
                         <a href="javascript:article.check('{$vo.id}');" class="layui-btn layui-btn-small btn-success" >
                             审核
                         </a>
-                    {/eq}
+                        {/eq}
+                    </div>
                     <div class="img">
                         <img src="{$vo.cover}" alt="干啥勒？咋没图片勒" class="images" />
                     </div>

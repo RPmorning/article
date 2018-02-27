@@ -24,3 +24,11 @@
 .essayli .words{
     margin-top: 10px;
 }
+.btns{
+    margin:0 auto;width:200px;
+    position: relative
+}
+.btns a{
+    margin-left: 10px;
+    margin-right: 10px;
+}

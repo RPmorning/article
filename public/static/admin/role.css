@@ -6,3 +6,7 @@
 
 #menu-tree li:first-child{}
 #menu-tree li{line-height: 40px; border-top: 1px solid #e6e6e6;}
+
+.layui-btn {
+    height: 34px;
+}

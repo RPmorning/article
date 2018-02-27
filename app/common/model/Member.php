@@ -62,4 +62,9 @@ class Member extends Model
         return  $this->hasOne("Role",'id','role_id')->field("*");
     }
 
+    public function roles()
+    {
+        return  $this->hasOne("Role",'id','role_id')->field("*");
+    }
+
 }
