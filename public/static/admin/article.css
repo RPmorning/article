@@ -18,7 +18,7 @@
 .essayli span{
     display: block;
     text-align: center;
-    text-shadow: 5px 5px 5px #FFB5C5;
+    /*text-shadow: 5px 5px 5px #FFB5C5;*/
     font-size: 15px;
 }
 .essayli .words{
