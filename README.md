@@ -1,1 +1,2 @@
-#keywaysoft
+#ThinkPHP5
+简易的文章管理系统。具有基本的权限功能
