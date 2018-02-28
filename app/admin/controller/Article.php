@@ -78,9 +78,11 @@ class Article extends Base
     public function save()
     {
         $data = $this->request->post();
-        $tmpArr = explode('/', $data['cover']);
-        if(count($tmpArr)>2){
-            $data['cover'] = $tmpArr[count($tmpArr)-1];
+        if(!empty($data['cover'])){
+            $tmpArr = explode('/', $data['cover']);
+            if(count($tmpArr)>2){
+                $data['cover'] = $tmpArr[count($tmpArr)-1];
+            }
         }
         $res = $this->article->saveArticle($data);
         if($res) {
