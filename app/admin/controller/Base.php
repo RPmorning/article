@@ -34,7 +34,8 @@ class Base extends Common
         if(IS_ROOT){
             $menus = Menu::all(['status'=>1]);
         }else{
-            $rules = \app\common\model\Role::where('id',session('user_auth')['uid'])->value('rules');
+            $role_id = \app\common\model\Member::where('id',session('user_auth')['uid'])->value('role_id');
+            $rules = \app\common\model\Role::where('id',$role_id)->value('rules');
             $menus = Menu::where("status", 1)->where("id", "exp", " IN ($rules) ")->select();
         }
 //        $menus = Menu::all(['status'=>1]);
