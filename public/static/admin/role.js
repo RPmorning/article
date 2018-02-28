@@ -106,7 +106,7 @@ layui.use(['form'], function(){
                 layer.open({
                     type: 1,
                     title: result.msg,
-                    area: ['500px', '900px'],
+                    area: ['500px', '700px'],
                     shadeClose: true,
                     content: result.data
                 });

@@ -60,7 +60,8 @@ class Article extends Base
     {
         $article=  $this->article->getArticleById($id);
         if($article){
-            $this->assign("categorys", $this->category->getCategorysByType(0, 0));
+//            $this->assign("categorys", $this->category->getCategorysByType(0, 0));
+            $this->assign("categorys", $this->category->getCategorysByUser());
             $this->assign("article", $article);
             $data = $this->fetch();
             return $this->success("编辑文章", url("index"), $data);
