@@ -36,11 +36,11 @@ class Article extends ArticleModel
 
         if($categoryId){
             $articles = $this::with("member")->where($map)
-                ->field('content',true)->order("id desc")->paginate();
+                ->field('content',true)->order("update_time desc")->paginate();
         }else{
             $articles = $this::with("member")->where($map)
             ->where('category_id','in',$categories)
-                ->field('content',true)->order("id desc")->paginate();
+                ->field('content',true)->order("update_time desc")->paginate();
         }
         if($articles){
             return $articles;
