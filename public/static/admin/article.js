@@ -97,7 +97,10 @@ layui.use(['form','element','upload'], function() {
         }, function(){
             $.getJSON(articleUrl + "delete/id/" + id, function (result) {
                 layer.msg(result.msg, {time:2000}, function () {
-                    if(result.code) window.location.replace(result.url);
+                    if(result.msg=='删除成功'){
+                        $('.essaylist').find('#'+id).fadeOut();
+                    }
+                   // if(result.code) window.location.replace(result.url);
                 });
             });
         }, function(){
@@ -133,4 +136,22 @@ layui.use(['form','element','upload'], function() {
         });
     }
 
+    article.search = function () {
+       var check_status = $('#check_status option:selected') .val(),
+           category_id = $('#caterory_id option:selected') .val();
+
+        // var param = {
+        //     check_status: check_status,
+        //     category_id: category_id
+        // }
+
+        window.location.replace(articleUrl + "search/check_status/"+check_status +"/category_id/"+category_id);
+
+        // $.post(articleUrl + "search", param,  function (result) {
+        //     layer.msg(result.msg, {time:2000}, function () {
+        //         window.location.replace(result.url);
+        //     });
+        // });
+        // return false;
+    }
 });

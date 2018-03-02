@@ -19,6 +19,19 @@
             <input type="text" class="layui-input" lay-verify="required" placeholder="请输入标题" name="name">
         </div>
     </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">文件头</label>
+        <div class="layui-input-inline">
+            <select class="select-library"  name='tag'  lay-filter="tag" lay-verify="tag">
+                <option value="">选择文件头</option>
+                {volist name="library" id="vo"}
+                <option value="{$vo.id}">{$vo.name}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">文章摘要</label>
         <div class="layui-input-block">

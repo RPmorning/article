@@ -4,6 +4,7 @@ namespace app\common\service;
 
 use app\common\model\Library as LibraryModel;
 use app\common\model\Asset as AssetModel;
+use function Couchbase\fastlzDecompress;
 
 class Library extends LibraryModel
 {
@@ -165,5 +166,25 @@ class Library extends LibraryModel
             $this->error = $upload->getError();
             return false;
         }
+    }
+
+    /**
+     * get library for articles
+     */
+    public function getLibrary(){
+        $library = LibraryModel::field('id,name')->select();
+        if($library){
+            return $library;
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * get library for articles
+     * $id 文章id
+     */
+    public function getLibraryByArticleId($id){
+
     }
 }

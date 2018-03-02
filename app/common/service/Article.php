@@ -150,7 +150,7 @@ class Article extends ArticleModel
 
         $article = new ArticleModel();
         $article->where('id', $id)
-            ->update(['check' => 1]);
+            ->update(['check_status' => 1]);
         if($article){
             return true;
         }else{
@@ -234,6 +234,33 @@ class Article extends ArticleModel
             return $info;
         }else{
             $this->error = $upload->getError();
+            return false;
+        }
+    }
+
+    /**
+     * 搜索
+     */
+    public function searchArticle($res){
+        $uid = session('user_auth')['uid'];
+        $user = \app\common\model\Member::where('id',$uid)->find();
+        $categories = $user->role->operation->category;
+        if($res['check_status'] == 2){
+            $temp1  =  'check_status <> 2';
+        }else{
+            $temp1 = 'check_status = '.$res['check_status'];
+        }
+        if($res['category_id'] == 0){
+            $temp2  =  'category_id <> 0';
+        }else{
+            $temp2 = 'category_id = '.$res['category_id'];
+        }
+        $data = ArticleModel::where($temp1)->where($temp2)->order('update_time desc')
+            ->where('category_id','in',$categories)
+            ->field('content',true)->paginate();
+        if($data){
+            return $data;
+        }else{
             return false;
         }
     }

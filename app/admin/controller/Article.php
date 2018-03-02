@@ -9,17 +9,21 @@ namespace app\admin\controller;
 
 use app\common\service\Article as ArticleService;
 use app\common\service\Category as CategoryService;
+use app\common\service\Library;
+use think\Request;
 
 class Article extends Base
 {
     protected $article;
     protected $category;
+    protected $library;
 
-    public function __construct(ArticleService $article, CategoryService $category)
+    public function __construct(ArticleService $article, CategoryService $category,Library $library)
     {
         parent::__construct();
         $this->article = $article;
         $this->category = $category;
+        $this->library = $library;
     }
 
     /**
@@ -35,6 +39,7 @@ class Article extends Base
         $this->assign("categorys", $this->category->getCategorysByUser());
         $this->assign("articles", $this->article->getArticles($cid));
         $this->assign('power',$this->article->getArticlePower());
+        $this->assign('library',$this->library->getLibrary());
         return $this->fetch();
     }
 
@@ -63,6 +68,8 @@ class Article extends Base
 //            $this->assign("categorys", $this->category->getCategorysByType(0, 0));
             $this->assign("categorys", $this->category->getCategorysByUser());
             $this->assign("article", $article);
+//            $this->assign('library',$this->library->getLibraryByArticleId($id));
+            $this->assign('library',$this->library->getLibrary());
             $data = $this->fetch();
             return $this->success("编辑文章", url("index"), $data);
         }else{
@@ -197,5 +204,28 @@ class Article extends Base
             ];
         }
         return json($result, 200);
+    }
+
+    /**
+     * 收索
+     */
+    public function search(Request $request){
+        $res = $request->param();
+        $data = $this->article->searchArticle($res);
+        if($data){
+            $this->pageTitle = "文章管理";
+            $this->assign('pageTitle',$this->pageTitle);
+
+            $this->assign('power',$this->article->getArticlePower());
+            $this->assign('library',$this->library->getLibrary());
+            $this->assign("categorys", $this->category->getCategorysByUser());
+
+            $this->assign('articles',$data);
+            $this->assign('search',$res);
+            return  $this->fetch('index');
+        }else{
+            return $this->error('无该类型文章','index');
+        }
+
     }
 }

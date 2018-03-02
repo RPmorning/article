@@ -1,15 +1,39 @@
 <header class="category-filter layui-form">
     <div class="layui-form-item">
-        <select name="category_filter" lay-filter="categoryFilter">
-            <option value="0">全部文章</option>
-            {volist name="categorys" id="category"}
-            {present name="category.leaf"}
-            <option value="{$category.id}" disabled>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
-            {else/}
-            <option value="{$category.id}"{eq name='Request.param.cid' value='$category.id'} selected{/eq}>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
-            {/present}
-            {/volist}
-        </select>
+
+        <div class="layui-input-inline mr10">
+            <select name="caterory_id" id="caterory_id">
+                {if condition="empty($search)"}
+                    <option value="0">全部文章</option>
+                    {volist name="categorys" id="category"}
+                    <option value="{$category.id}">&nbsp&nbsp&nbsp|—{$category.name}</option>
+                    {/volist}
+                {else/}
+                    <option value="0">全部文章</option>
+                    {volist name="categorys" id="category"}
+                    <option value="{$category.id}" {if condition="$search.category_id eq $category.id"}selected{/if}>&nbsp&nbsp&nbsp|—{$category.name}</option>
+                    {/volist}
+
+                {/if}
+            </select>
+        </div>
+
+        <div class="layui-input-inline mr10">
+            <select name="check_status" id="check_status">
+                {if condition="empty($search)"}
+                <option value="2">全部</option>
+                <option value="0" >未发布</option>
+                <option value="1" >已发布</option>
+                {else/}
+                <option value="2" {if condition="$search.check_status eq 2"}selected{/if}>全部</option>
+                <option value="0" {if condition="$search.check_status eq 0"}selected{/if}>未发布</option>
+                <option value="1" {if condition="$search.check_status eq 1"}selected{/if}>已发布</option>
+                {/if}
+            </select>
+        </div>
+
+        <a href="javascript:article.search();" class="layui-btn btn-secondary mb5" >搜索</a>
+
     </div>
 </header>
 
@@ -19,7 +43,7 @@
             <ul class="essaylist">
                 {present name='articles'}
                 {volist name='articles' id='vo'}
-                <li class="essayli">
+                <li class="essayli" id="{$vo.id}">
                     <div class="btns">
                         {eq name="power.operation_update" value="1"}
                         <a href="javascript:article.edit('{$vo.id}');" class="layui-btn layui-btn-small btn-success" >
@@ -38,12 +62,12 @@
                         {/eq}
                     </div>
                     <div class="img">
-                        <img src="{$vo.cover}" alt="无图片" class="images" />
+                        <img src="{$vo.cover}" alt="文章摘要：{$vo.desc}" class="images" />
                     </div>
                     <span class="words">标题：{$vo.name}</span>
 
-                    {eq name="vo.check" value="1"}
-                        <span class="words" style="color: #1E9FFF">状态：已发布</span>
+                    {eq name="vo.check_status" value="1"}
+                        <span class="words" style="color: #1E9FFF">状态：已发布&nbsp&nbsp&nbsp&nbsp浏览量：{$vo.view}</span>
                     {else /}
                         <span class="words" style="color: red">状态：未发布</span>
                     {/eq}

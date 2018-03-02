@@ -23,6 +23,12 @@
 }
 .essayli .words{
     margin-top: 10px;
+    white-space: nowrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: 90%;
+    overflow: hidden;
+    text-align: center;
 }
 .btns{
     margin:0 auto;width:200px;
