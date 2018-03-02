@@ -45,6 +45,11 @@ class Index extends Base
         return $this->fetch();
     }
 
+//    public function console(){
+//        $this->assign('page_title', '绵阳公安信息网');
+//        return $this->fetch();
+//    }
+
 
 
     /* 清除缓存 */
