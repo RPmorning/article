@@ -109,7 +109,7 @@ class Category extends CategoryModel
     public function saveCategory($data)
     {
         // 表单验证
-        $data["level"] = $data["level"] + 1;
+        $data["level"] = $data["level"];
         try {
             if(isset($data["id"])) { // 更新
                 $this::update($data);
