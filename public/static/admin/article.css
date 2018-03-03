@@ -2,8 +2,8 @@
 
 .record{
     position: absolute;
-    bottom: 50px;
-    right: 45%;
+    bottom: 42px;
+    right: 49%
 }
 .essaylist li{float: left; width: 260px; margin-bottom: 20px}
 .essaylist li{border: 1px solid #ffffff}

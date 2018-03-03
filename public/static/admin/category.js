@@ -46,9 +46,9 @@ layui.use(['form','element'], function() {
     });
 
     form.on('submit(save)', function(data){
-        var mix = (data.field.pid).split("|");
-        data.field.pid = mix[0];
-        data.field.level = mix[1];
+        // var mix = (data.field.pid).split("|");
+        data.field.pid = 0;
+        data.field.level = 1;
         $.post(categoryUrl + "save", data.field,  function (result) {
             layer.msg(result.msg, {time:2000}, function () {
                 if(result.code) window.location.replace(result.url);

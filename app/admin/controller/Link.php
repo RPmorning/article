@@ -29,9 +29,9 @@ class Link extends Base
      */
     public function index($cid = null)
     {
-        $this->pageTitle = "作品管理";
+        $this->pageTitle = "友情链接";
         $this->assign('pageTitle',$this->pageTitle);
-        $this->assign("categorys", $this->category->getCategorysByType(0,1));
+        $this->assign("categorys", $this->category->getCategorysByType(1,0));
         $this->assign("links", $this->link->getLinks($cid));
         return $this->fetch();
     }

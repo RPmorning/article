@@ -28,6 +28,8 @@ class Category extends CategoryModel
     public function getCategorysByType($type = -1, $mid = -1)
     {
         $map["status"] = 1;
+        $map["type"] = $type;
+        $map["model_id"] = $mid;
         $categorys = CategoryModel::all($map);
         $categorys = collection($categorys)->toArray();
         return $categorys;

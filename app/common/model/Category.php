@@ -19,7 +19,7 @@ class Category extends Model
     // 定义数据表中不存在的字段
     protected function getTypeTextAttr($value, $data)
     {
-        $type = [0=>'内部栏目', 1=>'单网页', 2=>'外部链接'];
+        $type = [0=>'文章栏目', 1=>'外部链接', 2=>'单网页'];
         return $type[$data['type']];
     }
     protected function getModelTextAttr($value, $data)

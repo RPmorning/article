@@ -1,16 +1,5 @@
 <form class="layui-form mt20">
     <div class="layui-form-item">
-        <label class="layui-form-label">上级</label>
-        <div class="layui-input-inline">
-            <select name="pid" lay-filter="pid">
-                <option value="0|0">作为一级栏目</option>
-                {volist name="categorys" id="category"}
-                <option value="{$category.id}|{$category.level}"{eq name='category.id' value='$pid'} selected{/eq}>{php}echo str_repeat("&nbsp;&nbsp;",$category['level']).dec2roman($category['level']);{/php}—{$category.name}</option>
-                {/volist}
-            </select>
-        </div>
-    </div>
-    <div class="layui-form-item">
         <label class="layui-form-label">栏目类型</label>
         <div class="layui-input-inline">
             <select name="type" lay-filter="type">
