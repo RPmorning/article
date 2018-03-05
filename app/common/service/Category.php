@@ -244,4 +244,9 @@ class Category extends CategoryModel
             return false;
         }
     }
+
+    public function getCategorysForIndex(){
+        $data = CategoryModel::field('id,name,type,model_id')->select();
+        return $data;
+    }
 }

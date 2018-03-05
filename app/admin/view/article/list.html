@@ -38,13 +38,13 @@
 </header>
 
 <essay class="main-essay">
-    <div class="layui-tab-item layui-show">
+    <div class="layui-tab-item layui-show fl" style="width: 100%;">
         <div class="essay">
             <ul class="essaylist">
                 {present name='articles'}
                 {volist name='articles' id='vo'}
                 <li class="essayli" id="{$vo.id}">
-                    <div class="btns">
+                    <div class="btns pt15">
                         {eq name="power.operation_update" value="1"}
                         <a href="javascript:article.edit('{$vo.id}');" class="layui-btn layui-btn-small btn-success" >
                             编辑
@@ -78,7 +78,7 @@
             </ul>
         </div>
     </div>
-    <div class="fr mt20 record">
+    <div class="fr mt20">
         总记录数：{$articles->total()} {$articles->render()}
     </div>
 </essay>

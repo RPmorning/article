@@ -8,10 +8,11 @@
 .essaylist li{float: left; width: 260px; margin-bottom: 20px}
 .essaylist li{border: 1px solid #ffffff}
 .essaylist li:hover{border:1px solid #BFEFFF; background-color: #ffffff}
-.essayli .img{width:260px; text-align: center;box-shadow: 10px 10px 5px #888888;}
+.essayli .img{width:260px; text-align: center;box-shadow: 10px 10px 5px #888888; height: 230px;
+    overflow: hidden;}
 .images{
     width: 200px;
-    height: 230px;
+   
     margin: 10px auto;
     border: 1px solid black;
 }
