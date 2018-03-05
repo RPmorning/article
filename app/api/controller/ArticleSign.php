@@ -21,9 +21,10 @@ class ArticleSign extends Controller
         $this->articleSign = $articleSign;
     }
 
-    public function index(){
-        $data = $this->articleSign->getArticleSign();
-
+    public function index(Request $request){
+        $res = $request->param();
+        $data = $this->articleSign->getArticleSign($res);
+        var_json('200','',$data);
     }
 
     public function save(Request $request){

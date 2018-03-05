@@ -19,7 +19,7 @@ class Article extends Model
         /*$dateYM = date('Y-m',$update_time);
         $dateD= date('d',$update_time);
         return $dateYM.$dateD;*/
-        return date('Y-m-d H:i:s',$update_time);
+        return date('Y-m-d',$update_time);
     }
 
     protected function getCoverAttr($cover){
@@ -32,5 +32,10 @@ class Article extends Model
     public function member()
     {
         return  $this->belongsTo("Member")->field("id, username");
+    }
+
+    public function category()
+    {
+        return  $this->belongsTo("Category",'category_id','id')->field("*");
     }
 }

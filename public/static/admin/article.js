@@ -43,6 +43,17 @@ layui.use(['form','element','upload'], function() {
     });
 
     form.on('submit(save)', function(data){
+        if (data.field.name == '' || data.field.name == '请输入标题') {
+            layer.msg('请输入标题', {time:1500}, function () {
+            });
+            return false;
+        }
+        if (data.field.desc == '' || data.field.desc == '请输入摘要') {
+            layer.msg('请输入摘要', {time:1500}, function () {
+            });
+            return false;
+        }
+
         data.field.cover = cover ? cover : uploadSrc.attr("data-src");
         $.post(articleUrl + "save", data.field,  function (result) {
             layer.msg(result.msg, {time:2000}, function () {

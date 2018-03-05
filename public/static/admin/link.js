@@ -9,7 +9,7 @@ layui.use(['form','layedit','upload'], function() {
         layedit = layui.layedit;
 
     // 创建一个上传实例
-    uploadLinkCover();
+    // uploadLinkCover();
 
     // 验证规则
     form.verify({
@@ -38,7 +38,7 @@ layui.use(['form','layedit','upload'], function() {
     });
 
     form.on('submit(save)', function(data){
-        data.field.cover = cover ? cover : uploadLinkSrc.attr("data-src");
+        // data.field.cover = cover ? cover : uploadLinkSrc.attr("data-src");
         $.post(linkUrl + "save", data.field,  function (result) {
             layer.msg(result.msg, {time:2000}, function () {
                 window.location.replace(result.url);
@@ -53,12 +53,10 @@ layui.use(['form','layedit','upload'], function() {
                 type: 1,
                 title: result.msg,
                 area: ['700px', '400px'],
-                shlinkeClose: false,
+                shadeClose: true,
                 content: result.data,
                 success: function(layero, index){
                     layerDom = layero;
-                    uploadLinkCover();
-                    uploadLinkSrc = $("#edit-cover-src");
                 }
             });
             // relolink form
@@ -81,31 +79,31 @@ layui.use(['form','layedit','upload'], function() {
     };
 
     // 定义一个封面上传控件
-    function uploadLinkCover() {
-        layui.upload({
-            //指定原始元素，默认直接查找class="layui-uplolink-file"
-            url: linkUrl + "cover",
-            title: '请上传封面图',
-            method: 'post', //上传接口的http类型
-            before: function(input){
-                //返回的参数item，即为当前的input DOM对象
-                loadLinkIndex = layer.lolink(0, {shlinke: false}); //0代表加载的风格，支持0-2
-                console.log('文件上传中');
-            },
-            success: function(result){
-                layer.close(loadLinkIndex);
-                if(result.code){
-                    layer.msg("上传成功", {time:2000}, function () {
-                        cover = result.path;
-                        uploadLinkSrc.attr("src", uplolinkSrc.attr("data-path") + "/" + cover);
-                        uploadLinkSrc.fadeIn();
-                    });
-
-                }else{
-                    layer.msg("上次失败" + result.msg,  {time:2000});
-                }
-            }
-        });
-    };
+    // function uploadLinkCover() {
+    //     layui.upload({
+    //         //指定原始元素，默认直接查找class="layui-uplolink-file"
+    //         url: linkUrl + "cover",
+    //         title: '请上传封面图',
+    //         method: 'post', //上传接口的http类型
+    //         before: function(input){
+    //             //返回的参数item，即为当前的input DOM对象
+    //             loadLinkIndex = layer.lolink(0, {shlinke: false}); //0代表加载的风格，支持0-2
+    //             console.log('文件上传中');
+    //         },
+    //         success: function(result){
+    //             layer.close(loadLinkIndex);
+    //             if(result.code){
+    //                 layer.msg("上传成功", {time:2000}, function () {
+    //                     cover = result.path;
+    //                     uploadLinkSrc.attr("src", uplolinkSrc.attr("data-path") + "/" + cover);
+    //                     uploadLinkSrc.fadeIn();
+    //                 });
+    //
+    //             }else{
+    //                 layer.msg("上次失败" + result.msg,  {time:2000});
+    //             }
+    //         }
+    //     });
+    // };
 
 });

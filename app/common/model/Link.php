@@ -15,6 +15,10 @@ class Link extends Model
     // 设置自动完成的属性
     protected $insert = ['status' => 1];
 
+    protected function getUpdateTimeAttr($update_time){
+        return date('Y-m-d H:i:s',$update_time);
+    }
+
     //定义关联
     public function member()
     {

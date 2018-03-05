@@ -13,8 +13,22 @@ use app\common\model\ArticleSign as ArticleSignModel;
 class ArticleSign extends ArticleSignModel
 {
 
-    public function getArticleSign(){
-
+    public function getArticleSign($res){
+        $departmrnt = \app\common\model\Department::field('id,department_name')->select();
+        $data = ArticleSignModel::where('article_id',$res['articleId'])->select();
+        $count = count($data);
+        foreach ($departmrnt as $key=>$value){
+            $value['status'] = '未签收';
+            $value['time'] = '';
+            for($i=0; $i<$count; $i++){
+                if($value['id'] == $data[$i]['department_id']){
+                    $value['status'] = '已签收';
+                    $value['time'] = $data[$i]['sign_time'];
+                    break;
+                }
+            }
+        }
+        return $departmrnt;
     }
 
     public function saveArticleSign($res){
@@ -27,7 +41,7 @@ class ArticleSign extends ArticleSignModel
             if(krcmf_md5($res['password'],  UC_AUTH_KEY) === $user['password']){
                 $articleSign = new ArticleSignModel([
                     'department_id'  =>  $user->department_id,
-                    'article_id' =>  $res['article_id'],
+                    'article_id' =>  $res['articleId'],
                     'sign_time' =>  time()
                 ]);
                 $articleSign->save();

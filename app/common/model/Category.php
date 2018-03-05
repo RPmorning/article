@@ -36,32 +36,4 @@ class Category extends Model
         // 获取排除数据表中的content字段（文本字段的值非常耗内存）之外的所有字段值
         return $this->hasMany('Article')->field('content',true);
     }
-    /**
-     * 获取栏目下的作品
-     */
-    public function works()
-    {
-        return $this->hasMany('Works')->field('content',true);
-    }
-    /**
-     * 获取专题
-     */
-    public function topic()
-    {
-        return $this->hasMany('Topic')->field('content',true);
-    }
-    /**
-     * 获取文档
-     */
-    public function document()
-    {
-        return $this->hasMany('Document')->field('content',true);
-    }
-    /**
-     * 获取电子期刊
-     */
-    public function library()
-    {
-        return $this->hasMany('Library')->field('content',true);
-    }
 }

@@ -7,7 +7,7 @@ use app\common\model\Link as LinkModel;
 class Link extends LinkModel
 {
     /**
-     * 获取文档列表
+     * 获取连接列表
      * @param int $status 状态
      * @return tree
      */
@@ -25,7 +25,7 @@ class Link extends LinkModel
 
 
     /**
-     * 保存文档
+     * 保存连接
      * @param array $data
      */
     public function saveLink($data)
@@ -47,7 +47,7 @@ class Link extends LinkModel
     }
 
     /**
-     * 获取指定文档
+     * 获取指定连接
      *
      * @param integer $id
      * @return mixed
@@ -64,7 +64,7 @@ class Link extends LinkModel
     }
 
     /**
-     * 删除指定文档
+     * 删除指定连接
      *
      * @param array $data
      * @return bool
@@ -120,26 +120,11 @@ class Link extends LinkModel
         }
     }
 
-    /**
-     * 保存封面图片，不含数据库保存
-     * @return array 成功返回网站参数配置，失败-返回-false
-     */
-    public function saveCover($file)
-    {
-        if(empty($file)) {
-            $this->error = '请选择上传文件';
-            return false;
-        }
-        static $upload = null;
-        if (!$upload) {
-            $upload = new \sckr\Upload();
-        }
-        $info = $upload->uploadFile($file, "image");
-        if($info){
-            return $info;
-        }else{
-            $this->error = $upload->getError();
-            return false;
+    public function getLink($res){
+        $data = LinkModel::where('category_id',$res['linkId'])->field('name,url')->select();
+        if($data){
+            return $data;
         }
     }
+
 }

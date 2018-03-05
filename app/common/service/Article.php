@@ -264,4 +264,56 @@ class Article extends ArticleModel
             return false;
         }
     }
+
+    public function getArticleByTypeList($res){
+        $number = 8;
+        if(isset($res['count'])){
+            $number = $res['count'];
+        }
+        $temp = \app\common\model\Category::where('id',$res['category_id'])->select();
+        $data = ArticleModel::where('category_id',$res['category_id'])->order('update_time desc')
+            ->field('id,name,cover,update_time,desc')
+            ->paginate($number);
+        $dataTemp['channelId'] = $temp[0]['id'];
+        $dataTemp['name'] = $temp[0]['name'];
+        $dataTemp['items'] = $data;
+        return $dataTemp;
+    }
+
+    public function getArticleByKeyword($res){
+        if(isset($res['count'])){
+            $number = $res['count'];
+        }else{
+            $number = 10;
+        }
+        $data = ArticleModel::where('name', 'like', '%' . $res['keyword'] . '%')
+            ->order('update_time desc')
+            ->field('id,name,update_time,desc')
+            ->paginate($number);
+        return $data;
+    }
+
+    public function getArticleByArticleId($res){
+        $articleModel  = new ArticleModel();
+        $data = $articleModel->where('id',$res['id'])
+            ->field('id,name,update_time,content,view,category_id')
+            ->find();
+        $time = $data->getData('update_time');
+
+        $data->category->name;
+        $data->time = date('Y-m-d H:i:s',$time);
+        unset($data['category']);
+        return $data;
+    }
+
+    public function saveView($res){
+        $articleModel  = new ArticleModel();
+        $count = $articleModel->where('id',$res['articleId'])->value('view');
+        $count = $count + 1;
+        $articleModel->save([
+            'view'  => $count,
+        ],['id' => $res['articleId']]);
+
+    }
+
 }

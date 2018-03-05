@@ -42,7 +42,7 @@ class Link extends Base
      */
     public function read($cid)
     {
-        $this->assign("categorys", $this->category->getCategorysByType(0,1));
+        $this->assign("categorys", $this->category->getCategorysByType(1,0));
         $this->assign("links", $this->link->getLink($cid));
         $data = $this->fetch("list");
         return $this->success("文章列表", url("index"), $data);
@@ -58,10 +58,10 @@ class Link extends Base
     {
         $link=  $this->link->getlinkById($id);
         if($link){
-            $this->assign("categorys", $this->category->getCategorysByType(0,1));
+            $this->assign("categorys", $this->category->getCategorysByType(1,0));
             $this->assign("link", $link);
             $data = $this->fetch();
-            return $this->success("编辑文章", url("index"), $data);
+            return $this->success("编辑链接", url("index"), $data);
         }else{
             return $this->error("编辑失败");
         }
