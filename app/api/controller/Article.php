@@ -54,10 +54,20 @@ class Article extends Controller
         var_json(200, '', $articleList);
     }
 
+    /**
+     * @param Request $request
+     * 浏览次数的增加
+     */
     public function saveView(Request $request){
         $res = $request->param();
         $articleList = $this->article->saveView($res);
         var_json('200','浏览次数增加');
+    }
+
+    public function getArticlesTwo(Request $request){
+        $res = $request->param();
+        $articleList = $this->article->getArticlesTwo($res);
+        var_json('200','',$articleList);
     }
 
 }

@@ -316,4 +316,17 @@ class Article extends ArticleModel
 
     }
 
+    public function getArticlesTwo($res){
+        $number = 8;
+        if(isset($res['count'])){
+            $number = $res['count'];
+        }
+        $dataTemp1 = ArticleModel::where('category_id',$res['category_id_1'])->order('update_time desc')
+            ->field('id,name,cover,update_time,desc')->paginate($number);
+        $dataTemp2 = ArticleModel::where('category_id',$res['category_id_2'])->order('update_time desc')
+            ->field('id,name,cover,update_time,desc')->paginate($number);
+        $data = ['1'=>$dataTemp1,'2'=>$dataTemp2];
+        return $data;
+    }
+
 }
