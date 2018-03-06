@@ -24,7 +24,7 @@
         <label class="layui-form-label">文件头</label>
         <div class="layui-input-inline">
             <select class="select-library"  name='tag'  lay-filter="tag" lay-verify="tag">
-                <option value="">选择文件头</option>
+                <option value="0">选择文件头</option>
                 {volist name="library" id="vo"}
                 <option value="{$vo.id}" {if condition="$vo.id eq $article.tag"} selected {/if}>{$vo.name}</option>
                 {/volist}

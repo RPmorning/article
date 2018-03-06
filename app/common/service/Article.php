@@ -272,6 +272,7 @@ class Article extends ArticleModel
         }
         $temp = \app\common\model\Category::where('id',$res['category_id'])->select();
         $data = ArticleModel::where('category_id',$res['category_id'])->order('update_time desc')
+            ->where('check_status',1)
             ->field('id,name,cover,update_time,desc')
             ->paginate($number);
         $dataTemp['channelId'] = $temp[0]['id'];
@@ -287,6 +288,7 @@ class Article extends ArticleModel
             $number = 10;
         }
         $data = ArticleModel::where('name', 'like', '%' . $res['keyword'] . '%')
+            ->where('check_status',1)
             ->order('update_time desc')
             ->field('id,name,update_time,desc')
             ->paginate($number);
@@ -296,6 +298,7 @@ class Article extends ArticleModel
     public function getArticleByArticleId($res){
         $articleModel  = new ArticleModel();
         $data = $articleModel->where('id',$res['id'])
+            ->where('check_status',1)
             ->field('id,name,update_time,content,view,category_id')
             ->find();
         $time = $data->getData('update_time');
@@ -321,11 +324,23 @@ class Article extends ArticleModel
         if(isset($res['count'])){
             $number = $res['count'];
         }
+        $temp1 = \app\common\model\Category::where('id',$res['category_id_1'])->select();
         $dataTemp1 = ArticleModel::where('category_id',$res['category_id_1'])->order('update_time desc')
+            ->where('check_status',1)
             ->field('id,name,cover,update_time,desc')->paginate($number);
-        $dataTemp2 = ArticleModel::where('category_id',$res['category_id_2'])->order('update_time desc')
+        $dataTemp2['channelId'] = $temp1[0]['id'];
+        $dataTemp2['name'] = $temp1[0]['name'];
+        $dataTemp2['items'] = $dataTemp1;
+
+
+        $temp2 = \app\common\model\Category::where('id',$res['category_id_2'])->select();
+        $dataTemp3 = ArticleModel::where('category_id',$res['category_id_2'])->order('update_time desc')
+            ->where('check_status',1)
             ->field('id,name,cover,update_time,desc')->paginate($number);
-        $data = ['1'=>$dataTemp1,'2'=>$dataTemp2];
+        $dataTemp4['channelId'] = $temp2[0]['id'];
+        $dataTemp4['name'] = $temp2[0]['name'];
+        $dataTemp4['items'] = $dataTemp3;
+        $data = ['left'=>$dataTemp2,'right'=>$dataTemp4];
         return $data;
     }
 
