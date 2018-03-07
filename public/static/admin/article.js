@@ -64,7 +64,9 @@ layui.use(['form','element','upload'], function() {
     });
 
     article.edit = function (id) {
-        $.getJSON(articleUrl + "edit/id/" + id, function (result) {
+        var check_status = $('#check_status option:selected') .val(),
+            category_id = $('#caterory_id option:selected') .val();
+        $.getJSON(articleUrl + "edit/id/" + id+'/category_id/'+category_id+'/check_status/'+check_status, function (result) {
             if(result.code) {
                 UE.delEditor('edit-container-'+id);
                 var edit = $(".layui-tab-title").children("li:eq(2)");

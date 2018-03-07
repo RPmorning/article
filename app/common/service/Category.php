@@ -220,7 +220,7 @@ class Category extends CategoryModel
     }
 
     public function getCategorysForRole(){
-        $category = CategoryModel::field('id,name')->select();
+        $category = CategoryModel::field('id,name')->where('type',0)->select();
         if($category){
             return $category;
         }else{

@@ -25,16 +25,16 @@ class Article extends ArticleModel
 //            return false;
 //        }
 //    }
-    public function getArticles($categoryId = null, $status = -1)
+    public function getArticles($categoryId = null, $checked = null)
     {
         $uid = session('user_auth')['uid'];
         $user = \app\common\model\Member::where('id',$uid)->find();
         $categories = $user->role->operation->category;
         $map = [];
         if($categoryId) $map["category_id"] = $categoryId;
-        if($status == 1) $map["status"] = $status;
-
+        if($checked != 2) $map["check_status"] = $checked;
         if($categoryId){
+
             $articles = $this::with("member")->where($map)
                 ->field('content',true)->order("update_time desc")->paginate();
         }else{

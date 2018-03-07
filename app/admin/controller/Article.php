@@ -33,13 +33,23 @@ class Article extends Base
      */
     public function index($cid = null)
     {
+        if($cid){
+            $hello = explode(',',$cid);
+            $category_id = $hello[0];
+            $check_status = $hello[1];
+        }else{
+            $category_id = 0;
+            $check_status = 2;
+        }
+        $res = ['category_id'=>$category_id,'check_status'=>$check_status];
         $this->pageTitle = "文章管理";
         $this->assign('pageTitle',$this->pageTitle);
 //        $this->assign("categorys", $this->category->getCategorysByType(0, 0));
         $this->assign("categorys", $this->category->getCategorysByUser());
-        $this->assign("articles", $this->article->getArticles($cid));
+        $this->assign("articles", $this->article->getArticles($category_id,$check_status));
         $this->assign('power',$this->article->getArticlePower());
         $this->assign('library',$this->library->getLibrary());
+        $this->assign('search',$res);
         return $this->fetch();
     }
 
@@ -61,15 +71,18 @@ class Article extends Base
      * @param int $pid
      * @return \think\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $article=  $this->article->getArticleById($id);
+        $res = $request->param();
+        $article=  $this->article->getArticleById($res['id']);
         if($article){
 //            $this->assign("categorys", $this->category->getCategorysByType(0, 0));
             $this->assign("categorys", $this->category->getCategorysByUser());
             $this->assign("article", $article);
 //            $this->assign('library',$this->library->getLibraryByArticleId($id));
             $this->assign('library',$this->library->getLibrary());
+            $this->assign('checked',$res['check_status']);
+            $this->assign('categoryChecked',$res['category_id']);
             $data = $this->fetch();
             return $this->success("编辑文章", url("index"), $data);
         }else{
@@ -93,8 +106,9 @@ class Article extends Base
             }
         }
         $res = $this->article->saveArticle($data);
+//        dump($res);die();
         if($res) {
-            return $this->success("保存成功", url("index", "cid=".$data["category_id"]));
+            return $this->success("保存成功", url("index", "cid=".$data["categoryChecked"].','.$data['checked']));
         }else{
             return $this->error($this->category->getError());
         }
