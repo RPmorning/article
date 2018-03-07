@@ -303,7 +303,7 @@ class Article extends ArticleModel
             ->find();
         $time = $data->getData('update_time');
 
-        $data->category->name;
+        $data->categoryName = $data->category['name'];
         $data->time = date('Y-m-d H:i:s',$time);
         unset($data['category']);
         return $data;

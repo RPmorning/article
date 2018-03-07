@@ -1,0 +1,155 @@
+.panel {
+  width: 100%;
+  min-height: 1220px;
+  background: #fff;
+  margin-top: 10px;
+  margin-bottom: 80px;
+  padding-bottom: 60px;
+  padding-top: 40px; }
+
+.head {
+  font-size: 36px;
+  color: #333333;
+  text-align: center;
+  width: 100%;
+  line-height: 36px; }
+
+.message {
+  height: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #f4f4f4;
+  color: #999999;
+  font-size: 14px;
+  width: 1076px;
+  margin: 25px auto 0;
+  border: 1px solid #d2d2d2; }
+  .message span {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px; }
+  .message span.time {
+    margin: 0 20px 0 35px; }
+  .message span.looked {
+    float: right;
+    margin-right: 35px; }
+
+.article {
+  width: 1010px;
+  min-height: 500px;
+  margin: 0 auto;
+  border-bottom: 1px solid #d2d2d2; }
+
+.check {
+  width: 100%;
+  margin-top: 44px; }
+  .check #check_title {
+    cursor: pointer; }
+  .check .checkBtn {
+    height: 14px;
+    width: 290px;
+    background: url("../images/check.png") no-repeat 210px 0px;
+    float: left; }
+    .check .checkBtn .check_link {
+      font-size: 14px;
+      line-height: 14px;
+      color: #1784ff;
+      font-weight: bold;
+      cursor: pointer;
+      display: block;
+      height: 14px;
+      float: right; }
+      .check .checkBtn .check_link:hover {
+        color: #1066c9; }
+  .check .checkTable {
+    width: 538px;
+    float: left;
+    margin-left: 40px; }
+    .check .checkTable table.check_table_data {
+      border: 1px solid #d2d2d2;
+      width: 100%;
+      border-collapse: collapse; }
+      .check .checkTable table.check_table_data .check_data {
+        display: none; }
+      .check .checkTable table.check_table_data th.branch {
+        width: 208px; }
+      .check .checkTable table.check_table_data th.time {
+        width: 206px; }
+      .check .checkTable table.check_table_data th.status {
+        width: 124px; }
+      .check .checkTable table.check_table_data th {
+        vertical-align: baseline;
+        border: 1px solid #d2d2d2;
+        font-size: 14px;
+        color: #333333;
+        height: 30px;
+        line-height: 30px;
+        text-align: left;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        padding-left: 15px;
+        background: #ebf1f3; }
+      .check .checkTable table.check_table_data td {
+        border: 1px solid #d2d2d2;
+        height: 30px;
+        line-height: 30px;
+        text-align: left;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        padding-left: 15px;
+        color: #999999;
+        font-size: 14px; }
+
+#model {
+  width: 330px;
+  height: 240px;
+  display: block;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #f4f4f4;
+  z-index: 100000; }
+  #model .list {
+    padding: 25px 0; }
+    #model .list li {
+      width: 80%;
+      margin: 10px auto auto;
+      overflow: hidden; }
+  #model #HTitle {
+    color: #333;
+    font-weight: bold; }
+  #model strong {
+    width: 22%;
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: right; }
+  #model .fl {
+    width: 72%;
+    display: inline-block; }
+    #model .fl input {
+      width: 100%;
+      text-indent: 5px;
+      border: 1px solid #ccc;
+      padding: 5px 0;
+      -webkit-box-shadow: 0 0 3px #ddd inset;
+              box-shadow: 0 0 3px #ddd inset; }
+  #model .submitBtn {
+    width: 100%;
+    height: 32px;
+    line-height: 30px;
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+    background-color: #428bca;
+    color: #fff;
+    padding: 0;
+    cursor: pointer;
+    border: none; }
+    #model .submitBtn:hover {
+      opacity: 0.8;
+      filter: alpha(opacity=80); }
+
+#HOverlay {
+  filter: alpha(opacity=50);
+  background: #000; }

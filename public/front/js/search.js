@@ -1,0 +1,58 @@
+$(function(){
+
+    var url = document.location.search;
+    var request = {};
+    if (url.indexOf("?") != -1){
+        var str = url.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i++){
+          request[strs[i].split("=")[0]] = strs[i].split("=")[1];
+        }
+    }
+
+    $('.nav_top_li').hover(
+         function(){
+             $(this).find('.nav_top_item_sub').css('display','block')
+         },
+         function(){
+             $(this).find('.nav_top_item_sub').css('display','none')
+         }
+    );
+
+    var  searchListTemplate= Handlebars.compile($("#searchList-template").html());
+
+    //ie8手动打开cors请求
+    jQuery.support.cors = true;
+
+    // 搜素
+    $.ajax({
+      type : 'GET',
+      url :　'http://www.my.com/api/article/getArticleByKeyword',
+      data : {
+        keyword : request.keyword,
+        page : request.page
+      },
+      dataType : 'json',
+      async : false,
+      success : function(message){
+         if(message.status == 200){
+
+           var tplData = message.data;
+           request.pageCount = Math.ceil(tplData.total/10);
+           $('#search_list').html(searchListTemplate(tplData));
+         }else {
+           console.log('获取搜素数据失败！');
+         }
+      }
+    })
+
+    $('.article').dotdotdot();
+    $(".devidePage").createPage({
+        pageCount:request.pageCount,
+        current:request.page,
+        backFn:function(i){
+            document.location.href = 'file:///C:/Users/Administrator/Desktop/mianyang/front/search.html?keyword='+ request.keyword + '&page=' + i;
+        }
+    });
+
+ })

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/show.css" />
+    <title>绵阳公安信息网</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="model" id="model">
+            <ul class="list">
+                <li>
+                    <strong>用户名<font color="#ff0000">*</font></strong>
+                    <div class="fl"><input type="text" name="name" class="name" /></div>
+                </li>
+                <li>
+                    <strong>密码<font color="#ff0000">*</font></strong>
+                    <div class="fl"><input type="password" name="phone" class="password" /></div>
+                </li>
+                <li>
+                    <input type="button" value="确认提交" class="submitBtn" />
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+
+            <div class="banner">
+                <p class="welcome">欢迎访问绵阳公安信息网！</p>
+            </div>
+
+            <div class="nav">
+                <ul class="nav_top">
+                    <li class="nav_top_li">
+                        <a class="nav_top_item" href="#" target="_blank">公安部</a>
+                        <ul class="nav_top_item_sub">
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li" style="margin:0;"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li"><a href="#">绵阳市公安局</a></li>
+                            <li class="nav_top_sub_li" style="margin:0;"><a href="#">绵阳市公安局</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav_top_li"><a class="nav_top_item" href="#" target="_blank">全国公安</a></li>
+                    <li class="nav_top_li"><a class="nav_top_item" href="#" target="_blank">省公安厅</a></li>
+                    <li class="nav_top_li"><a class="nav_top_item" href="#" target="_blank">全省公安厅</a></li>
+                    <li class="nav_top_li"><a class="nav_top_item" href="#" target="_blank">全市公安厅</a></li>
+                    <li class="nav_top_li"><a class="nav_top_item" href="#" target="_blank">市局部门</a></li>
+                    <li class="nav_top_li"><a class="nav_top_item" href="#" target="_blank">系统登录</a></li>
+                </ul>
+                <div class="nav_bottom clearfix">
+                    <div class="arrow">
+                        网站导航目录
+                    </div>
+                    <div class="nav_link">
+                        <a href="#" class="nav_link_item" target="_blank">公安要闻</a>
+                        <a href="#" class="nav_link_item" target="_blank">市局文件</a>
+                        <a href="#" class="nav_link_item" target="_blank">通知通报</a>
+                        <a href="#" class="nav_link_item" target="_blank">机关动态</a>
+                        <a href="#" class="nav_link_item" target="_blank">各地动态</a>
+                        <a href="#" class="nav_link_item" target="_blank">队伍建设</a>
+                        <a href="#" class="nav_link_item" target="_blank">情报研判</a>
+                        <a href="#" class="nav_link_item" target="_blank">每日治安动态</a>
+                        <a href="#" class="nav_link_item" target="_blank">公安研究</a>
+                        <a href="#" class="nav_link_item" target="_blank">改革创新</a>
+                        <a href="#" class="nav_link_item" target="_blank">光荣榜</a>
+                        <a href="#" class="nav_link_item" target="_blank">两学一做</a>
+                        <a href="#" class="nav_link_item" target="_blank">警察文化</a>
+                        <a href="#" class="nav_link_item" target="_blank">媒体聚焦</a>
+                        <a href="#" class="nav_link_item" target="_blank">公安部规章</a>
+                        <a href="#" class="nav_link_item" target="_blank">舆情通报</a>
+                        <a href="#" class="nav_link_item" target="_blank">网络公安形象墙</a>
+                        <a href="#" class="nav_link_item" target="_blank">网络理政</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div id="article"></div>
+                <div class="check clearfix">
+                    <div class="checkBtn">
+                        <a class="check_link" href="javascript:;">点击签收</a>
+                    </div>
+                    <div class="checkTable" id="checkTable">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="./js/handlebars-1.0.0.beta.6.js"></script>
+    <script type="text/javascript" src="./js/jquery.hDialog.js"></script>
+    <script id="checkTable-template" type="text/x-handlebars-template">
+      <table class="check_table_data">
+          <tr id="check_title" class="check_title">
+              <th class="branch">所在部门</th>
+              <th class="time">签收时间</th>
+              <th class="status">签收状态</th>
+          </tr>
+          {{#each this}}
+          <tr class="check_data">
+              <td>{{department_name}}</td>
+              <td>{{time}}</td>
+              <td>{{status}}</td>
+          </tr>
+          {{/each}}
+      </table>
+    </script>
+    <script id="article-template" type="text/x-handlebars-template">
+        <div class="head">{{name}}</div>
+        <div class="message">
+            <span class="time">发布时间：{{time}}</span>
+            <span class="category">分类：{{categoryName}}</span>
+            <span class="looked">{{view}}次浏览</span>
+        </div>
+        <div class="article">
+            {{{content}}}
+        </div>    
+    </script>
+    <script type="text/javascript" src="./js/show.js"></script>
+</body>
+
+</html>

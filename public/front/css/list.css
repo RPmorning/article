@@ -1,0 +1,155 @@
+.panel {
+  width: 100%;
+  min-height: 1220px;
+  background: #fff;
+  margin-top: 10px;
+  margin-bottom: 80px;
+  padding-bottom: 60px; }
+
+.search {
+  padding-top: 30px; }
+
+.location {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 60px;
+  padding: 23px 64px;
+  color: #999999;
+  font-size: 14px;
+  line-height: 14px;
+  background: url("../images/location.png") no-repeat 44px 22px; }
+  .location a {
+    color: #999999;
+    font-size: 14px;
+    line-height: 14px; }
+    .location a:hover {
+      text-decoration: underline;
+      color: #1784ff; }
+
+.headTitle {
+  width: 100%;
+  height: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-left: 44px; }
+  .headTitle .headTitle_content {
+    width: 1114px;
+    height: 50px;
+    background: #1784ff;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 16px 20px; }
+    .headTitle .headTitle_content .moudele_head {
+      font-size: 18px;
+      color: #fff;
+      line-height: 18px;
+      padding-left: 12px;
+      border-left: 4px solid #fff; }
+
+.listContent {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 12px 62px; }
+  .listContent .list_item_img {
+    padding: 5px 0px 25px; }
+  .listContent .list_item_nothing {
+    padding: 5px 0px 15px; }
+  .listContent .list_item {
+    width: 100%;
+    border-bottom: 1px solid #d2d2d2; }
+    .listContent .list_item .list_item_title {
+      height: 60px;
+      width: 600px;
+      font-size: 20px;
+      line-height: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+      .listContent .list_item .list_item_title a {
+        color: #333333;
+        font-weight: bold; }
+        .listContent .list_item .list_item_title a:hover {
+          color: #1784ff; }
+    .listContent .list_item .list_item_img {
+      width: 180px;
+      height: 108px;
+      overflow: hidden;
+      float: left; }
+    .listContent .list_item .list_item_content_withImg {
+      height: 108px;
+      width: 896px;
+      float: left;
+      padding: 10px 20px;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box; }
+      .listContent .list_item .list_item_content_withImg .article {
+        font-size: 14px;
+        color: #333;
+        line-height: 26px;
+        height: 52px; }
+      .listContent .list_item .list_item_content_withImg .time {
+        font-size: 12px;
+        color: #a3a3a3;
+        margin-top: 24px; }
+    .listContent .list_item .list_item_content_withoutImg {
+      height: 96px;
+      width: 100%;
+      float: left;
+      padding: 10px 0px;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box; }
+      .listContent .list_item .list_item_content_withoutImg .article {
+        font-size: 14px;
+        color: #333;
+        line-height: 26px;
+        height: 52px; }
+      .listContent .list_item .list_item_content_withoutImg .time {
+        font-size: 12px;
+        color: #a3a3a3;
+        margin-top: 12px; }
+
+.devidePage {
+  width: 100%;
+  height: 30px;
+  margin-top: 30px;
+  text-align: right;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-right: 62px; }
+  .devidePage a {
+    display: inline-block;
+    color: #555555;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 1px solid #d9d9d9;
+    margin: 0 4px;
+    vertical-align: middle;
+    font-size: 14px; }
+    .devidePage a:hover {
+      text-decoration: none;
+      border: 1px solid #1784ff;
+      color: #1784ff; }
+  .devidePage span.current {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    margin: 0 4px;
+    border: 1px solid #1784ff;
+    color: #1784ff;
+    vertical-align: middle;
+    font-size: 14px; }
+  .devidePage span.disabled {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    margin: 0 4px;
+    vertical-align: middle;
+    color: #5f5f5f;
+    border: 1px solid #5f5f5f;
+    background: #f2f2f2;
+    font-size: 14px; }
