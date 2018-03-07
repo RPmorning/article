@@ -54,7 +54,7 @@
         <label class="layui-form-label">文章封面</label>
         <div class="layui-input-block">
             <div class="cover-upload">
-                <img data-path="__UPLOAD__" id="edit-cover-src" data-src="{$article.cover}" {empty name="article.cover"}class="hidden"{else/}src="{$article.cover}"{/empty}>
+                <img data-path="__UPLOAD__" id="edit-cover-src" data-src="__UPLOAD__/{$article.cover}" {empty name="article.cover"}class="hidden"{else/}src="__UPLOAD__/{$article.cover}"{/empty}>
                 <div class="site-demo-upbar mt10">
                     <input type="file" name="cover" class="layui-upload-file"  lay-ext="jpg|png|gif" id="edit-cover">
                 </div>

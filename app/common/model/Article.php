@@ -22,11 +22,12 @@ class Article extends Model
         return date('Y-m-d',$update_time);
     }
 
-    protected function getCoverAttr($cover){
-        //return 'http://192.168.13.72/upload/'.$cover;
-        $request = request();
-        return $request->domain().'/upload/'.$cover;
-    }
+//    protected function getCoverAttr($cover){
+//        //return 'http://192.168.13.72/upload/'.$cover;
+//        $request = request();
+//        return $request->domain().'/upload/'.$cover;
+//    }
+
 
     //定义关联
     public function member()
