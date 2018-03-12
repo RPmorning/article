@@ -14,7 +14,8 @@ class ArticleSign extends ArticleSignModel
 {
 
     public function getArticleSign($res){
-        $departmrnt = \app\common\model\Department::field('id,department_name')->select();
+        $departmrnts = \app\common\model\Article::where('id',$res['articleId'])->value('departments');
+        $departmrnt = \app\common\model\Department::field('id,department_name')->where('id','in',$departmrnts)->select();
         $data = ArticleSignModel::where('article_id',$res['articleId'])->select();
         $count = count($data);
         foreach ($departmrnt as $key=>$value){
