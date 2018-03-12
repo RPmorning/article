@@ -421,8 +421,19 @@ $(function(){
     //     jQuery(".switchTab").slide();
     // })
 
-    var getDataWithCookie = function(){
-        policeNews();
+    $.ajax({
+        type : 'GET',
+        url : 'http://www.my.com/api/category/getCategorys',
+        cache:false,
+        success : function(message){
+          if(message.status == 200){
+            for(var i = 0; i < message.data.length; i++){
+                channel[message.data[i].name] = message.data[i].id;
+            }
+          }
+        }
+    }).done(function(){
+         policeNews();
         meeting();
         friendLink();
         office();
@@ -437,40 +448,8 @@ $(function(){
         honor();
         media();
         wall();
-    }
-
-    var getDataWithoutCookie = function(){
-        $.ajax({
-            type : 'GET',
-            url : 'http://www.my.com/api/category/getCategorys',
-            cache:false,
-            success : function(message){
-              if(message.status == 200){
-                for(var i = 0; i < message.data.length; i++){
-                    channel[message.data[i].name] = message.data[i].id;
-                }
-                $.cookie('channelObj',JSON.stringify(channel));
-                channel = JSON.parse($.cookie('channelObj'));
-              }
-            }
-        }).done(function(){
-            getDataWithCookie();
-        }).done(function(){
-            jQuery(".switchTab").slide();
-        })
-    }
-
-	$('.banner').click(function(){
-		document.location.href = '/front/index.html';
-    })
-    
-    if($.cookie('channelObj')){
-        var channel = JSON.parse($.cookie('channelObj'));
-        getDataWithCookie();
+    }).done(function(){
         jQuery(".switchTab").slide();
-    }else{
-        getDataWithoutCookie()
-    }
-
+    })
 
 })

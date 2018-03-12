@@ -1,6 +1,6 @@
 .panel {
   width: 100%;
-  min-height: 1220px;
+  min-height: 1050px;
   background: #fff;
   margin-top: 10px;
   margin-bottom: 80px;
@@ -13,6 +13,24 @@
   text-align: center;
   width: 100%;
   line-height: 36px; }
+
+.redHead{
+  font-size:72px;
+  text-align: center;
+  color: #fc0000;
+  margin:0 auto 90px;
+  width: 1076px;
+}
+
+.redSubHead{
+  font-size: 24px;
+  color: #fc0000;
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #fc0000;
+  width: 1076px;
+  margin:0 auto 60px;
+}
 
 .message {
   height: 40px;
@@ -37,6 +55,7 @@
 .article {
   width: 1010px;
   min-height: 500px;
+  padding-top: 30px;
   margin: 0 auto;
   border-bottom: 1px solid #d2d2d2; }
 
@@ -67,6 +86,7 @@
     margin-left: 40px; }
     .check .checkTable table.check_table_data {
       border: 1px solid #d2d2d2;
+      position: relative;
       width: 100%;
       border-collapse: collapse; }
       .check .checkTable table.check_table_data .check_data {
@@ -76,7 +96,22 @@
       .check .checkTable table.check_table_data th.time {
         width: 206px; }
       .check .checkTable table.check_table_data th.status {
-        width: 124px; }
+        width: 124px;
+       }
+        .check .checkTable table.check_table_data th.status .arrowIcon{
+        display:block;
+        width: 20px;
+        height: 15px;
+        background : url("../images/toBottom.png") no-repeat center;
+        position: absolute;
+        top: 9px;
+        right: 10px;
+      }
+
+      .toBottom{
+        background : url("../images/toTop.png") no-repeat center!important;
+      }
+
       .check .checkTable table.check_table_data th {
         vertical-align: baseline;
         border: 1px solid #d2d2d2;
@@ -103,7 +138,7 @@
 #model {
   width: 330px;
   height: 240px;
-  display: block;
+  display: none;
   background-color: #fff;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -153,3 +188,25 @@
 #HOverlay {
   filter: alpha(opacity=50);
   background: #000; }
+
+  table{
+    border: 1px solid #d2d2d2;
+    border-collapse: collapse;
+  }
+
+  th{
+    border: 1px solid #d2d2d2;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 15px;
+  }
+
+  td{
+    border: 1px solid #d2d2d2;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 15px;
+  }
+

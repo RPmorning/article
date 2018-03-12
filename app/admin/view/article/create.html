@@ -31,6 +31,25 @@
             </select>
         </div>
     </div>
+    <div class="layui-form-item" >
+        <label class="layui-form-label">是否签收</label>
+        <div class="layui-input-block signblock">
+            <input type="radio" name="sign" value="0" title="否" checked lay-filter="sign">
+            <input type="radio" name="sign" value="1" title="是"  lay-filter="sign">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item signDepartment hide" id="signDepartment">
+        <label class="layui-form-label">签收部门</label>
+        <div class="layui-input-block" style="width: 800px">
+            {present name='department'}
+            {volist name='department' id='vo'}
+                <input type="checkbox" name="department" title="{$vo.department_name}" value="{$vo.id}">
+            {/volist}
+            {/present}
+        </div>
+    </div>
 
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">文章摘要</label>

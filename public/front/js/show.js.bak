@@ -34,10 +34,6 @@ $(function(){
          }
     );
 
-    $('.banner').click(function(){
-      document.location.href = '/front/index.html';
-    })
-
     $('.submitBtn').click(function(e) {
         e.stopPropagation();
       var $name = $('.name');
@@ -66,7 +62,7 @@ $(function(){
         },
         success : function(message){
           if(message.status == 200){
-            $.tooltip('签收成功，2秒后将关闭窗口',2000,true);
+            $.tooltip('签收成功，2秒后自动关闭',2000,true);
             setTimeout(function(){
               $el.hDialog('close',{box:'#model'});
             },2000);
@@ -146,8 +142,6 @@ $(function(){
          }
       }
     })
-
-	
 
 
  })

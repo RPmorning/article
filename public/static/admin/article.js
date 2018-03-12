@@ -42,6 +42,26 @@ layui.use(['form','element','upload'], function() {
         return false;
     });
 
+    form.on('radio(sign)', function (data) {
+        if(data.value == '1'){
+            $('#signDepartment').removeClass('hide');
+
+        }else {
+            $('#signDepartment').addClass('hide');
+        }
+
+    });
+
+    form.on('radio(sign_1)', function (data) {
+        if(data.value == '1'){
+            $('.signDepartment_1').removeClass('hide');
+        }else {
+
+            $('.signDepartment_1').addClass('hide');
+        }
+
+    });
+
     form.on('submit(save)', function(data){
         if (data.field.name == '' || data.field.name == '请输入标题') {
             layer.msg('请输入标题', {time:1500}, function () {
@@ -53,9 +73,27 @@ layui.use(['form','element','upload'], function() {
             });
             return false;
         }
-
         data.field.cover = cover ? cover : uploadSrc.attr("data-src");
-        $.post(articleUrl + "save", data.field,  function (result) {
+
+        var departments = [];
+        $("input[name='department']").each(function(i){
+            if($(this).is(':checked')) {
+                departments.push($(this).val());
+            }
+        });
+
+        if($(".signDepartment_1").hasClass('hide')){
+            var param = {
+                data : data.field,
+                departments : ''
+            }
+        }else {
+            var param = {
+                data : data.field,
+                departments : departments.join(',')
+            }
+        }
+        $.post(articleUrl + "save", param,  function (result) {
             layer.msg(result.msg, {time:2000}, function () {
                 if(result.code) window.location.replace(result.url);
             });

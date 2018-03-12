@@ -76,11 +76,10 @@
                 </div>
             </div>
 
-            <div class="panel">
+            <div class="panel" id="listData">
                 <div class="location">
                     <span class="location_title">您的位置：</span>
                     <span class="location_way_1"><a href="#">首页</a></span><span>></span>
-                    <span class="location_way_2"><a href="#">市局公安</a></span><span>></span>
                     <span class="location_way_now"><a href="#">公安要闻</a></span>
                 </div>
 
@@ -90,7 +89,7 @@
                     </div>
                 </div>
 
-                <div class="listContent" id="listData"></div>
+                <div class="listContent" ></div>
                 <div class="devidePage"></div>
             </div>
         </div>
@@ -101,12 +100,25 @@
     <script type="text/javascript" src="./js/jquery.dotdotdot.js"></script>
     <script type="text/javascript" src="./js/jquery.page.js"></script>
     <script id="listData-template" type="text/x-handlebars-template">
+        <div class="location">
+            <span class="location_title">您的位置：</span>
+            <span class="location_way_1"><a href="#">首页</a></span><span>></span>
+            <span class="location_way_now"><a href="/front/list.html?category_id={{channelId}}">{{name}}</a></span>
+        </div>
+
+        <div class="headTitle">
+            <div class="headTitle_content">
+                <div class="moudele_head">{{name}}</div>
+            </div>
+        </div>
+
+        <div class="listContent">
         {{#each items.data}}
         {{#if cover}}
         <div class="list_item clearfix list_item_img">
-            <div class="list_item_title"><a href="file:///C:/Users/Administrator/Desktop/mianyang/front/show.html?articleId={{id}}">{{name}}</a></div>
+            <div class="list_item_title"><a href="/front/show.html?articleId={{id}}">{{name}}</a></div>
             <div class="list_item_img">
-                <a href="#"><img src={{cover}} alt="1" width="180" height="108"></a>
+                <a href="#"><img src="http://www.my.com/upload/{{cover}}" alt="1" width="180" height="108"></a>
             </div>
             <div class="list_item_content_withImg">
                 <div class="article">{{desc}}</div>
@@ -115,7 +127,7 @@
         </div>
         {{else}}
         <div class="list_item clearfix list_item_nothing">
-            <div class="list_item_title"><a href="file:///C:/Users/Administrator/Desktop/mianyang/front/show.html?articleId={{id}}">{{name}}</a></div>
+            <div class="list_item_title"><a href="/front/show.html?articleId={{id}}">{{name}}</a></div>
             <div class="list_item_content_withoutImg">
                 <div class="article">{{desc}}</div>
                 <div class="time">{{update_time}}</div>
@@ -123,6 +135,8 @@
         </div>
         {{/if}}
         {{/each}}
+        </div>
+        <div class="devidePage"></div>
     </script>
     <script type="text/javascript" src="./js/list.js"></script>
 </body>

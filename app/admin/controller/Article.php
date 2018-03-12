@@ -10,6 +10,7 @@ namespace app\admin\controller;
 use app\common\service\Article as ArticleService;
 use app\common\service\Category as CategoryService;
 use app\common\service\Library;
+use app\common\service\Department;
 use think\Request;
 
 class Article extends Base
@@ -17,13 +18,15 @@ class Article extends Base
     protected $article;
     protected $category;
     protected $library;
+    protected $department;
 
-    public function __construct(ArticleService $article, CategoryService $category,Library $library)
+    public function __construct(ArticleService $article, CategoryService $category,Library $library,Department $department)
     {
         parent::__construct();
         $this->article = $article;
         $this->category = $category;
         $this->library = $library;
+        $this->department = $department;
     }
 
     /**
@@ -49,6 +52,7 @@ class Article extends Base
         $this->assign("articles", $this->article->getArticles($category_id,$check_status));
         $this->assign('power',$this->article->getArticlePower());
         $this->assign('library',$this->library->getLibrary());
+        $this->assign('department',$this->department->getDepartment());
         $this->assign('search',$res);
         return $this->fetch();
     }
@@ -83,6 +87,7 @@ class Article extends Base
             $this->assign('library',$this->library->getLibrary());
             $this->assign('checked',$res['check_status']);
             $this->assign('categoryChecked',$res['category_id']);
+            $this->assign('department',$this->department->getDepartment());
             $data = $this->fetch();
             return $this->success("编辑文章", url("index"), $data);
         }else{
@@ -98,7 +103,9 @@ class Article extends Base
      */
     public function save()
     {
-        $data = $this->request->post();
+        $res = $this->request->post();
+        $res['data']['departments'] = $res['departments'];
+        $data = $res['data'];
         if(!empty($data['cover'])){
             $tmpArr = explode('/', $data['cover']);
             if(count($tmpArr)>2){
@@ -233,6 +240,7 @@ class Article extends Base
             $this->assign('power',$this->article->getArticlePower());
             $this->assign('library',$this->library->getLibrary());
             $this->assign("categorys", $this->category->getCategorysByUser());
+            $this->assign('department',$this->department->getDepartment());
 
             $this->assign('articles',$data);
             $this->assign('search',$res);

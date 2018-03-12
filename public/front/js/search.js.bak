@@ -55,8 +55,4 @@ $(function(){
         }
     });
 
-	$('.banner').click(function(){
-		document.location.href = '/front/index.html';
-	})
-
  })

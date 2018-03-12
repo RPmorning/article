@@ -368,15 +368,14 @@
 <script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/handlebars-1.0.0.beta.6.js"></script>
 <script type="text/javascript" src="./js/jquery.SuperSlide.2.1.1.js"></script>
-<script type="text/javascript" src="./js/jquery.cookie.js"></script>
 <script id="moduleList-template" type="text/x-handlebars-template">
   <div class="mess_head">
-      <a href="/front/list.html?category_id={{channelId}}" class="mess_head_left bk" target="_blank">{{name}}</a>
+      <a href="file:///C:/Users/Administrator/Desktop/mianyang/front/list.html?category_id={{channelId}}" class="mess_head_left bk">{{name}}</a>
   </div>
   <div class="mess_content">
       {{#each items.data}}
       <div class="mess_content_item">
-          <a href="/front/show.html?articleId={{id}}" class="mess_content_title" target="_blank">{{name}}</a>
+          <a href="/front/show.html?articleId={{id}}" class="mess_content_title">{{name}}</a>
           <span class="mess_content_time">{{update_time}}</span>
       </div>
       {{/each}}
@@ -384,21 +383,21 @@
 </script>
 <script id="friendLink-template" type="text/x-handlebars-template">
     {{#each this}}
-      <a href={{url}} class="friend_link" target="_blank" target="_blank">{{name}}</a>
+      <a href={{url}} class="friend_link" target="_blank">{{name}}</a>
     {{/each}}
 </script>
 <script id="switchTab-template" type="text/x-handlebars-template">
   <div class="mess_head hd clearfix">
       <ul>
-          <li><a href="/front/list.html?category_id={{left.channelId}}" class="mess_head_left" target="_blank">{{left.name}}</a></li>
-          <li><a href="/front/list.html?category_id={{right.channelId}}" class="mess_head_middle" target="_blank">{{right.name}}</a></li>
+          <li><a href="/front/list.html?category_id={{left.channelId}}" class="mess_head_left">{{left.name}}</a></li>
+          <li><a href="/front/list.html?category_id={{right.channelId}}" class="mess_head_middle">{{right.name}}</a></li>
       </ul>
   </div>
   <div class="bd">
       <div class="mess_content">
           {{#each left.items.data}}
           <div class="mess_content_item">
-              <a href="/front/show.html?articleId={{id}}" class="mess_content_title" target="_blank">{{name}}</a>
+              <a href="/front/show.html?articleId={{id}}" class="mess_content_title">{{name}}</a>
               <span class="mess_content_time">{{update_time}}</span>
           </div>
           {{/each}}
@@ -406,7 +405,7 @@
       <div class="mess_content">
             {{#each right.items.data}}
             <div class="mess_content_item">
-                <a href="/front/show.html?articleId={{id}}" class="mess_content_title" target="_blank">{{name}}</a>
+                <a href="/front/show.html?articleId={{id}}" class="mess_content_title">{{name}}</a>
                 <span class="mess_content_time">{{update_time}}</span>
             </div>
             {{/each}}
@@ -417,7 +416,7 @@
     
         <div class="duty_right_head clearfix">
             <a class="duty_right_title" href="/front/list.html?category_id={{channelId}}">{{name}}</a>
-            <a href="/front/list.html?category_id={{channelId}}" class="more" target="_blank">查看更多+</a>
+            <a href="/front/list.html?category_id={{channelId}}" class="more">查看更多+</a>
         </div>
         <div class="news" id="news">
             <div class="hd">
@@ -446,7 +445,7 @@
         <div class="news_list">
             {{#each items.data}}
             <div class="news_list_item clearfix">
-                <a href="/front/show.html?articleId={{id}}" class="news_title" target="_blank">{{name}}</a>
+                <a href="/front/show.html?articleId={{id}}" class="news_title">{{name}}</a>
                 <span class="news_time">{{update_time}}</span>
             </div>
             {{/each}}
@@ -454,8 +453,8 @@
 </script>
 <script id="wall-template" type="text/x-handlebars-template">
         <div class="wall_head">
-            <a href="/front/list.html?category_id={{channelId}}" class="wall_head_left" target="_blank">{{name}}</a>
-            <a href="/front/list.html?category_id={{channelId}}" class="wall_head_more" target="_blank">查看更多+</a>
+            <a href="/front/list.html?category_id={{channelId}}" class="wall_head_left">{{name}}</a>
+            <a href="/front/list.html?category_id={{channelId}}" class="wall_head_more">查看更多+</a>
         </div>
         <div class="hd">
             <a class="arrow_left prev"></a>
@@ -464,7 +463,7 @@
         <div class="wall_content clearfix bd">
             <ul>
                 {{#each items.data}}
-                <a href="/front/show.html?articleId={{id}}" class="wall_content_item" target="_blank">
+                <a href="/front/show.html?articleId={{id}}" class="wall_content_item">
                     <img src="http://www.my.com/upload/{{cover}}" alt="1" width="240" height="200" class="wall_content_pic">
                     <div class="shadow"></div>
                 </a>

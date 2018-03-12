@@ -299,13 +299,16 @@ class Article extends ArticleModel
         $articleModel  = new ArticleModel();
         $data = $articleModel->where('id',$res['id'])
             ->where('check_status',1)
-            ->field('id,name,update_time,content,view,category_id')
+            ->field('id,name,update_time,content,view,category_id,tag')
             ->find();
         $time = $data->getData('update_time');
 
         $data->categoryName = $data->category['name'];
+        $data->documentTitle = $data->library['name'];
+        $data->documentContent = $data->library['content'];
         $data->time = date('Y-m-d H:i:s',$time);
         unset($data['category']);
+        unset($data['library']);
         return $data;
     }
 

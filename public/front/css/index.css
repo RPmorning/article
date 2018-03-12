@@ -165,9 +165,13 @@
         color: #fff;
         line-height: 40px;
         padding-left: 36px;
+        display: block;
         -webkit-box-sizing: border-box;
                 box-sizing: border-box;
         float: left; }
+      .duty .duty_right .duty_right_head .duty_right_title:hover{
+        text-decoration: underline;
+      }
       .duty .duty_right .duty_right_head .more {
         display: block;
         -webkit-box-sizing: border-box;

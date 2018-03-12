@@ -39,4 +39,8 @@ class Article extends Model
     {
         return  $this->belongsTo("Category",'category_id','id')->field("*");
     }
+    public function library()
+    {
+        return  $this->hasOne("Library",'id','tag')->field("*");
+    }
 }
