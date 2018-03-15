@@ -4,50 +4,14 @@
     <div class="layui-tab mt0">
         <ul class="layui-tab-title new-tab">
             <li class="layui-this">角色列表</li>
-            <li><a href="{:url('category')}" style="font-style: inherit">添加角色</a></li>
+            <li>添加角色</li>
         </ul>
         <div class="layui-tab-content">
-            <div class="layui-tab-item layui-show">
-                <table class="layui-table" lay-even>
-                    <thead>
-                    <tr>
-                        <td>角色编号</td>
-                        <td>角色名称</td>
-                        <td>授权</td>
-                        <td>角色状态</td>
-                        <td>操作</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {volist name='roles' id='role'}
-                    <tr>
-                        <td>{$key+1}</td>
-                        <td>{$role.name}</td>
-                        <td>
-                            <a href="{:url('menu','id='.$role.id)}" style="font-style: inherit">菜单授权</a>
-                            <!-- <a href="{:url('access','id='.$role.id)}">数据授权</a>-->
-                        </td>
-                        <td class="layui-form">
-                            <input type="checkbox" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" data-id="{$role.id}"  value="1" {eq name="role.status" value="1"} checked{/eq}>
-                        </td>
-                        <td class="textalign">
-                            {eq name="$role.status" value="1"}
-                                <a href="javascript:auth.edit('{$role.id}');" class="layui-btn layui-btn btn-success">
-                                    <i class="layui-icon">&#xe642;</i>编辑
-                                </a>
-                                <a href="javascript:auth.delete('{$role.id}');" class="layui-btn layui-btn btn-success">
-                                    <i class="layui-icon">&#xe640;</i>删除
-                                </a>
-                            {/eq}
-                        </td>
-                    </tr>
-                    {/volist}
-                    </tbody>
-
-                </table>
-                <div class="fr mt20">
-                    总记录数：{$roles->total()} {$roles->render()}
-                </div>
+            <div class="layui-tab-item layui-show" id="article-list">
+                {include file="role/list" /}
+            </div>
+            <div class="layui-tab-item">
+                {include file="role/create" /}
             </div>
         </div>
     </div>

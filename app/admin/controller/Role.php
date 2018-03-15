@@ -35,6 +35,8 @@ class Role extends Base
     {
         $this->pageTitle = "角色列表";
         $this->assign('pageTitle',$this->pageTitle);
+        $category = $this->category->getCategorysForRole();
+        $this->assign('category',$category);
         return $this->fetch();
     }
     /**
