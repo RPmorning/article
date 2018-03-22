@@ -3,6 +3,8 @@
 namespace app\common\service;
 
 use app\common\model\Article as ArticleModel;
+use app\common\model\Category;
+use app\common\model\Department;
 
 class Article extends ArticleModel
 {
@@ -167,8 +169,16 @@ class Article extends ArticleModel
      * @return bool
      */
     public function releaseArticle($id){
-
         $article = new ArticleModel();
+
+        //保存分数
+        $articleInfo = $article->where('id',$id)->field('category_id,member_id')->find();
+        $scoreCategory = Category::where('id',$articleInfo['category_id'])->value('score');
+        $departmentId = \app\common\model\Member::where('id',$articleInfo['member_id'])->value('department_id');
+        $score = Department::where('id',$departmentId)->value('score');
+        $scoreNew = $score + $scoreCategory;
+        Department::where('id', $departmentId)->update(['score' => $scoreNew]);
+
         $article->where('id', $id)
             ->update(['check_status' => 1]);
         if($article){
@@ -375,6 +385,15 @@ class Article extends ArticleModel
         $dataTemp4['items'] = $dataTemp3;
         $data = ['left'=>$dataTemp2,'right'=>$dataTemp4];
         return $data;
+    }
+
+    /**
+     * 部门分数统计
+     */
+    public function countScore(){
+        $department = Department::where('id','neq',1)->field('id,department_name,score')
+            ->order('score desc')->select();
+        return $department;
     }
 
 }

@@ -70,4 +70,12 @@ class Article extends Controller
         var_json('200','',$articleList);
     }
 
+    /**
+     * 各个部门分数统计
+     */
+    public function countScore(){
+        $score = $this->article->countScore();
+        var_json('200','',$score);
+    }
+
 }
