@@ -116,11 +116,16 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">文章排序</label>
+        <label class="layui-form-label">是否顶置</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" placeholder="10" name="sort" value="{$article.sort}">
+            {if condition="$article.is_top == 1"}
+            <input type="checkbox" name="is_top" lay-skin="switch" lay-text="ON|OFF" checked>
+            {else /}
+            <input type="checkbox" name="is_top" lay-skin="switch" lay-text="ON|OFF">
+            {/if}
         </div>
     </div>
+
     <div class="layui-input-block">
         <input type="hidden" name="id" value="{$article.id}">
         <input type="hidden" name="categoryChecked" value="{$categoryChecked}">

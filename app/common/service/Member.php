@@ -60,6 +60,8 @@ class Member extends MemberModel
             "uid"             => $user["id"],
             "username"        => $user["realname"],
             "last_login_time" => $user["last_login_time"],
+            "department_id" => $user["department_id"],
+            "role_id" => $user["role_id"],
         );
 
         session('user_auth', $auth);

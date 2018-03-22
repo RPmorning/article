@@ -47,7 +47,6 @@ class Article extends Base
         $res = ['category_id'=>$category_id,'check_status'=>$check_status];
         $this->pageTitle = "文章管理";
         $this->assign('pageTitle',$this->pageTitle);
-//        $this->assign("categorys", $this->category->getCategorysByType(0, 0));
         $this->assign("categorys", $this->category->getCategorysByUser());
         $this->assign("articles", $this->article->getArticles($category_id,$check_status));
         $this->assign('power',$this->article->getArticlePower());
@@ -112,8 +111,12 @@ class Article extends Base
                 $data['cover'] = $tmpArr[count($tmpArr)-1];
             }
         }
+        if(isset($data['is_top'])){
+            $data['is_top'] = 1;
+        }else{
+            $data['is_top'] = 0;
+        }
         $res = $this->article->saveArticle($data);
-//        dump($res);die();
         if($res) {
             return $this->success("保存成功", url("index", "cid=".$data["categoryChecked"].','.$data['checked']));
         }else{
@@ -231,6 +234,7 @@ class Article extends Base
      * 收索
      */
     public function search(Request $request){
+        $signDepartment = session('user_auth')['department_id'];
         $res = $request->param();
         $data = $this->article->searchArticle($res);
         if($data){
@@ -241,6 +245,8 @@ class Article extends Base
             $this->assign('library',$this->library->getLibrary());
             $this->assign("categorys", $this->category->getCategorysByUser());
             $this->assign('department',$this->department->getDepartment());
+
+            $this->assign('signDepartment',$signDepartment);
 
             $this->assign('articles',$data);
             $this->assign('search',$res);

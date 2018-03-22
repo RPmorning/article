@@ -27,19 +27,39 @@ class Article extends ArticleModel
 //    }
     public function getArticles($categoryId = null, $checked = null)
     {
+//        $uid = session('user_auth')['uid'];
+//        $user = \app\common\model\Member::where('id',$uid)->find();
+//        $categories = $user->role->operation->category;
+//        $map = [];
+//        if($categoryId) $map["category_id"] = $categoryId;
+//        if($checked != 2) $map["check_status"] = $checked;
+
         $uid = session('user_auth')['uid'];
-        $user = \app\common\model\Member::where('id',$uid)->find();
-        $categories = $user->role->operation->category;
+        $department_id = session('user_auth')['department_id'];
+        $departments = \app\common\model\Member::where('department_id',$department_id)->column('id');
+        $departments = implode(",",$departments);
+        if($uid != 1){
+            $user = \app\common\model\Member::where('id',$uid)->find();
+            $categories = $user->role->operation->category;
+        }
         $map = [];
         if($categoryId) $map["category_id"] = $categoryId;
         if($checked != 2) $map["check_status"] = $checked;
-        if($categoryId){
 
-            $articles = $this::with("member")->where($map)
-                ->field('content',true)->order("update_time desc")->paginate();
+        if($uid != 1){
+            if($categoryId){
+
+                $articles = $this::with("member")->where($map)
+                    ->where('member_id','in',$departments)
+                    ->field('content',true)->order("update_time desc")->paginate();
+            }else{
+                $articles = $this::with("member")->where($map)
+                ->where('category_id','in',$categories)
+                    ->where('member_id','in',$departments)
+                    ->field('content',true)->order("update_time desc")->paginate();
+            }
         }else{
             $articles = $this::with("member")->where($map)
-            ->where('category_id','in',$categories)
                 ->field('content',true)->order("update_time desc")->paginate();
         }
         if($articles){
@@ -242,6 +262,10 @@ class Article extends ArticleModel
      * 搜索
      */
     public function searchArticle($res){
+        $department_id = session('user_auth')['department_id'];
+        $departments = \app\common\model\Member::where('department_id',$department_id)->column('id');
+        $departments = implode(",",$departments);
+
         $uid = session('user_auth')['uid'];
         $user = \app\common\model\Member::where('id',$uid)->find();
         $categories = $user->role->operation->category;
@@ -255,9 +279,15 @@ class Article extends ArticleModel
         }else{
             $temp2 = 'category_id = '.$res['category_id'];
         }
-        $data = ArticleModel::where($temp1)->where($temp2)->order('update_time desc')
-            ->where('category_id','in',$categories)
-            ->field('content',true)->paginate();
+        if($uid != 1){
+            $data = ArticleModel::where($temp1)->where($temp2)->order('update_time desc')
+                ->where('category_id','in',$categories)
+                ->where('member_id','in',$departments)
+                ->field('content',true)->paginate();
+        }else{
+            $data = ArticleModel::where($temp1)->where($temp2)->order('update_time desc')
+                ->field('content',true)->paginate();
+        }
         if($data){
             return $data;
         }else{
@@ -271,7 +301,7 @@ class Article extends ArticleModel
             $number = $res['count'];
         }
         $temp = \app\common\model\Category::where('id',$res['category_id'])->select();
-        $data = ArticleModel::where('category_id',$res['category_id'])->order('update_time desc')
+        $data = ArticleModel::where('category_id',$res['category_id'])->order('is_top desc,update_time desc')
             ->where('check_status',1)
             ->field('id,name,cover,update_time,desc')
             ->paginate($number);
