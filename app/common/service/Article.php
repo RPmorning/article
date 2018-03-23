@@ -3,7 +3,7 @@
 namespace app\common\service;
 
 use app\common\model\Article as ArticleModel;
-use app\common\model\Category;
+use app\common\model\Category as CategoryModel;
 use app\common\model\Department;
 
 class Article extends ArticleModel
@@ -114,6 +114,13 @@ class Article extends ArticleModel
      */
     public function saveArticle($data)
     {
+        if($data['is_top'] == 1){
+            $dataTemp = ArticleModel::where('category_id',$data['category_id'])->where('is_top',1)->find();
+            if($dataTemp){
+                ArticleModel::where('category_id',$data['category_id'])->where('is_top',1)->update(['is_top'=>0]);
+            }
+
+        }
         $data["member_id"] = UID;
         try {
             if(isset($data["id"])) { // 更新
@@ -173,7 +180,7 @@ class Article extends ArticleModel
 
         //保存分数
         $articleInfo = $article->where('id',$id)->field('category_id,member_id')->find();
-        $scoreCategory = Category::where('id',$articleInfo['category_id'])->value('score');
+        $scoreCategory = CategoryModel::where('id',$articleInfo['category_id'])->value('score');
         $departmentId = \app\common\model\Member::where('id',$articleInfo['member_id'])->value('department_id');
         $score = Department::where('id',$departmentId)->value('score');
         $scoreNew = $score + $scoreCategory;
@@ -339,7 +346,7 @@ class Article extends ArticleModel
         $articleModel  = new ArticleModel();
         $data = $articleModel->where('id',$res['id'])
             ->where('check_status',1)
-            ->field('id,name,update_time,content,view,category_id,tag')
+            ->field('id,name,update_time,content,view,category_id,tag,departments')
             ->find();
         $time = $data->getData('update_time');
 

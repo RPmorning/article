@@ -100,7 +100,6 @@ layui.use(['form','element','upload'], function() {
         });
         return false;
     });
-
     article.edit = function (id) {
         var check_status = $('#check_status option:selected') .val(),
             category_id = $('#caterory_id option:selected') .val();

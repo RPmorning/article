@@ -27,7 +27,7 @@ $(function(){
     // 搜素
     $.ajax({
       type : 'GET',
-      url :　'http://www.my.com/api/article/getArticleByKeyword',
+      url :　'/api/article/getArticleByKeyword',
       data : {
         keyword : request.keyword,
         page : request.page
@@ -56,7 +56,7 @@ $(function(){
     });
 
 	$('.banner').click(function(){
-		document.location.href = '/front/index.html';
+		document.location.href = '/index.html';
 	})
 
  })

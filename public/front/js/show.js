@@ -34,6 +34,35 @@ $(function(){
          }
     );
 
+    var article_sign = function () {
+      //获取签收列表
+      $.ajax({
+        type: 'GET',
+        url: 　'/api/article_sign/index',
+        data: {
+          articleId: request.articleId
+        },
+        dataType: 'json',
+        async: false,
+        cache: false,
+        success: function (message) {
+          if (message.status == 200) {
+            var tplData = message.data;
+            $('#checkTable').html(checkTableTemplate(tplData));
+            $('#check_title').click(
+              function () {
+                $('.check_data').toggle();
+                $('.check_table_data .arrowIcon').toggleClass('toBottom')
+              }
+            );
+  
+          } else {
+            console.log('获取签收列表数据失败！');
+          }
+        }
+      })
+    }
+
     $('.banner').click(function(){
       document.location.href = '/front/index.html';
     })
@@ -58,7 +87,7 @@ $(function(){
       //签收功能
       $.ajax({
         type : 'POST',
-        url : 'http://www.my.com/api/article_sign/save',
+        url : '/api/article_sign/save',
         data : {
           articleId : request.articleId,
           username : name,
@@ -67,6 +96,7 @@ $(function(){
         success : function(message){
           if(message.status == 200){
             $.tooltip('签收成功，2秒后将关闭窗口',2000,true);
+            article_sign();
             setTimeout(function(){
               $el.hDialog('close',{box:'#model'});
             },2000);
@@ -83,7 +113,7 @@ $(function(){
     //获取文章数据
     $.ajax({
       type : 'GET',
-      url :　'http://www.my.com/api/article/getArticleById',
+      url :　'/api/article/getArticleById',
       data : {
         id : request.articleId
       },
@@ -94,44 +124,23 @@ $(function(){
          if(message.status == 200){
            var tplData = message.data;
            $('#article').html(articleTemplate(tplData));
+           if(tplData.departments){
+              article_sign();
+              $('.checkBtn').show();
+           }else{
+           	 $('.article').css('border','none');
+           }
 
          }else {
            console.log('获取签收列表数据失败！');
          }
       }
     })
-    
-     //获取签收列表
-     $.ajax({
-      type : 'GET',
-      url :　'http://www.my.com/api/article_sign/index',
-      data : {
-        articleId : request.articleId
-      },
-      dataType : 'json',
-      async : false,
-      cache : false,
-      success : function(message){
-         if(message.status == 200){
-           var tplData = message.data;
-           $('#checkTable').html(checkTableTemplate(tplData));
-           $('#check_title').click(
-               function(){
-                   $('.check_data').toggle();
-                   $('.check_table_data .arrowIcon').toggleClass('toBottom')
-               }
-           );
-
-         }else {
-           console.log('获取签收列表数据失败！');
-         }
-      }
-    })
-
+   
     //增加浏览次数
     $.ajax({
       type : 'GET',
-      url :　'http://www.my.com/api/article/saveView',
+      url :　'/api/article/saveView',
       data : {
         articleId : request.articleId
       },

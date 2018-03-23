@@ -5,6 +5,7 @@ $(function(){
    var  switchTabTemplate= Handlebars.compile($("#switchTab-template").html());
    var  policeNewsTemplate= Handlebars.compile($("#policeNews-template").html());   
    var  wallTemplate = Handlebars.compile($("#wall-template").html());   
+   var  rankTemplate = Handlebars.compile($("#rank-template").html());
    //保存栏目id
    var channel = {}
    //ie8手动打开cors请求
@@ -51,12 +52,25 @@ $(function(){
         }
     })
 
+    //获取部门评分
+    $.ajax({
+        type : 'GET',
+        url : '/api/article/countScore',
+        cache:false,
+        success : function(message){
+            if(message.status == 200){
+                var tplData = message.data;
+                $('#rank').html(rankTemplate(tplData));
+            }
+        }
+    })
+
     //会议通知
     var meeting = function(){
       var category_id = channel['会议通知'];
       $.ajax({
           type : 'GET',
-          url : 'http://www.my.com/api/article/getArticleByTypeList',
+          url : '/api/article/getArticleByTypeList',
           data : { category_id  : category_id},
           cache:false,
           success : function(message){
@@ -77,7 +91,7 @@ $(function(){
         var category_id = channel['网络公安形象墙'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticleByTypeList',
+            url : '/api/article/getArticleByTypeList',
             data : { category_id  : category_id},
             cache:false,
             success : function(message){
@@ -98,7 +112,7 @@ $(function(){
       var category_id = channel['机关动态'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticleByTypeList',
+            url : '/api/article/getArticleByTypeList',
             data : { category_id  : category_id},
             cache:false,
             success : function(message){
@@ -118,7 +132,7 @@ $(function(){
         var category_id = channel['队伍建设'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticleByTypeList',
+            url : '/api/article/getArticleByTypeList',
             data : { category_id  : category_id},
             cache:false,
             success : function(message){
@@ -138,7 +152,7 @@ $(function(){
         var category_id = channel['公安研究'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticleByTypeList',
+            url : '/api/article/getArticleByTypeList',
             data : { category_id  : category_id},
             cache:false,
             success : function(message){
@@ -159,7 +173,7 @@ $(function(){
       var linkId = channel['友情链接'];
       $.ajax({
           type : 'GET',
-          url : 'http://www.my.com/api/link/getLinks',
+          url : '/api/link/getLinks',
           data : { linkId  : linkId},
           cache:false,
           success : function(message){
@@ -180,7 +194,7 @@ $(function(){
         var category_id = channel['警营文化'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticleByTypeList',
+            url : '/api/article/getArticleByTypeList',
             data : { category_id  : category_id},
             cache:false,
             success : function(message){
@@ -201,7 +215,7 @@ $(function(){
         var category_id_2 = channel['领导讲话'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticlesTwo',
+            url : '/api/article/getArticlesTwo',
             data :  { 
                         category_id_1 : category_id_1,
                         category_id_2 : category_id_2
@@ -225,7 +239,7 @@ $(function(){
         var category_id = channel['民警风采'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticleByTypeList',
+            url : '/api/article/getArticleByTypeList',
             data : { category_id  : category_id},
             cache:false,
             success : function(message){
@@ -246,7 +260,7 @@ $(function(){
         var category_id_2 = channel['打击破案'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticlesTwo',
+            url : '/api/article/getArticlesTwo',
             data :  { 
                         category_id_1 : category_id_1,
                         category_id_2 : category_id_2
@@ -271,7 +285,7 @@ $(function(){
         var category_id_2 = channel['改革创新'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticlesTwo',
+            url : '/api/article/getArticlesTwo',
             data :  { 
                         category_id_1 : category_id_1,
                         category_id_2 : category_id_2
@@ -296,7 +310,7 @@ $(function(){
         var category_id_2 = channel['每日治安动态'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticlesTwo',
+            url : '/api/article/getArticlesTwo',
             data :  { 
                         category_id_1 : category_id_1,
                         category_id_2 : category_id_2
@@ -321,7 +335,7 @@ $(function(){
         var category_id_2 = channel['曝光台'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticlesTwo',
+            url : '/api/article/getArticlesTwo',
             data :  { 
                         category_id_1 : category_id_1,
                         category_id_2 : category_id_2
@@ -346,7 +360,7 @@ $(function(){
         var category_id_2 = channel['媒体聚焦'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticlesTwo',
+            url : '/api/article/getArticlesTwo',
             data :  { 
                         category_id_1 : category_id_1,
                         category_id_2 : category_id_2
@@ -369,7 +383,7 @@ $(function(){
         var category_id = channel['公安要闻'];
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/article/getArticleByTypeList',
+            url : '/api/article/getArticleByTypeList',
             data : { category_id  : category_id},
             cache:false,
             success : function(message){
@@ -390,7 +404,7 @@ $(function(){
     //     // 获取栏目对应id
     //     $.ajax({
     //         type : 'GET',
-    //         url : 'http://www.my.com/api/category/getCategorys',
+    //         url : '/api/category/getCategorys',
     //         cache:false,
     //         success : function(message){
     //           if(message.status == 200){
@@ -442,7 +456,7 @@ $(function(){
     var getDataWithoutCookie = function(){
         $.ajax({
             type : 'GET',
-            url : 'http://www.my.com/api/category/getCategorys',
+            url : '/api/category/getCategorys',
             cache:false,
             success : function(message){
               if(message.status == 200){
@@ -461,7 +475,7 @@ $(function(){
     }
 
 	$('.banner').click(function(){
-		document.location.href = '/front/index.html';
+		document.location.href = '/index.html';
     })
     
     if($.cookie('channelObj')){

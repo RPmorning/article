@@ -27,7 +27,7 @@ $(function(){
     //获取列表页
     $.ajax({
         type : 'GET',
-        url : 'http://www.my.com/api/article/getArticleByTypeList',
+        url : '/api/article/getArticleByTypeList',
         data : { 
             category_id  : request.category_id,
             page : request.page || 1
@@ -56,7 +56,7 @@ $(function(){
     });
 
 	$('.banner').click(function(){
-		document.location.href = '/front/index.html';
+		document.location.href = '/index.html';
 	})
 
     
