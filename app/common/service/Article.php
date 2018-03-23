@@ -297,12 +297,12 @@ class Article extends ArticleModel
             $temp2 = 'category_id = '.$res['category_id'];
         }
         if($uid != 1){
-            $data = ArticleModel::where($temp1)->where($temp2)->order('update_time desc')
+            $data = ArticleModel::where($temp1)->where($temp2)->order('create_time desc')
                 ->where('category_id','in',$categories)
                 ->where('member_id','in',$departments)
                 ->field('content',true)->paginate();
         }else{
-            $data = ArticleModel::where($temp1)->where($temp2)->order('update_time desc')
+            $data = ArticleModel::where($temp1)->where($temp2)->order('create_time desc')
                 ->field('content',true)->paginate();
         }
         if($data){
@@ -336,7 +336,7 @@ class Article extends ArticleModel
         }
         $data = ArticleModel::where('name', 'like', '%' . $res['keyword'] . '%')
             ->where('check_status',1)
-            ->order('update_time desc')
+            ->order('create_time desc')
             ->field('id,name,update_time,desc')
             ->paginate($number);
         return $data;
@@ -375,7 +375,7 @@ class Article extends ArticleModel
             $number = $res['count'];
         }
         $temp1 = \app\common\model\Category::where('id',$res['category_id_1'])->select();
-        $dataTemp1 = ArticleModel::where('category_id',$res['category_id_1'])->order('update_time desc')
+        $dataTemp1 = ArticleModel::where('category_id',$res['category_id_1'])->order('create_time desc')
             ->where('check_status',1)
             ->field('id,name,cover,update_time,desc')->paginate($number);
         $dataTemp2['channelId'] = $temp1[0]['id'];
@@ -384,7 +384,7 @@ class Article extends ArticleModel
 
 
         $temp2 = \app\common\model\Category::where('id',$res['category_id_2'])->select();
-        $dataTemp3 = ArticleModel::where('category_id',$res['category_id_2'])->order('update_time desc')
+        $dataTemp3 = ArticleModel::where('category_id',$res['category_id_2'])->order('create_time desc')
             ->where('check_status',1)
             ->field('id,name,cover,update_time,desc')->paginate($number);
         $dataTemp4['channelId'] = $temp2[0]['id'];
