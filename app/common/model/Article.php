@@ -22,6 +22,13 @@ class Article extends Model
         return date('Y-m-d',$update_time);
     }
 
+    protected function getCreateTimeAttr($create_time){
+        /*$dateYM = date('Y-m',$update_time);
+        $dateD= date('d',$update_time);
+        return $dateYM.$dateD;*/
+        return date('Y-m-d',$create_time);
+    }
+
 //    protected function getCoverAttr($cover){
 //        //return 'http://192.168.13.72/upload/'.$cover;
 //        $request = request();
