@@ -41,9 +41,18 @@ class Category extends CategoryModel
      */
     public function getCategorysByUser(){
         $uid = session('user_auth')['uid'];
-        $user = \app\common\model\Member::where('id',$uid)->find();
-        $categories = $user->role->operation->category;
-        $category = CategoryModel::where('status',1)->where('id','in',$categories)->select();
+//        $user = \app\common\model\Member::where('id',$uid)->find();
+//        $categories = $user->role->operation->category;
+//        $category = CategoryModel::where('status',1)->where('id','in',$categories)->select();
+
+        if($uid == 1){
+            $category = CategoryModel::where('status',1)->where('type',0)->select();
+        }else{
+            $user = \app\common\model\Member::where('id',$uid)->find();
+            $categories = $user->role->operation->category;
+            $category = CategoryModel::where('status',1)->where('id','in',$categories)->select();
+        }
+
         return $category;
     }
 
